@@ -10,6 +10,7 @@ paginate = 8
 	brand = "Developer<br/>Pacenotes"
 	dateFormat = "02 Jan 2006"
 	googleAnalytics = "UA-109980000-1"
+	disqus = "developer-pacenotes-com"
 
 [menu]
 	[[menu.main]]
