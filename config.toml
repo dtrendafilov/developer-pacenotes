@@ -1,4 +1,4 @@
-baseURL = "https://developer-pacenotes.com/"
+baseURL = "http://www.developer-pacenotes.com/"
 languageCode = "en-us"
 title = "Developer Pacenotes"
 theme = "blackburn"
