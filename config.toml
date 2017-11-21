@@ -1,0 +1,28 @@
+baseURL = "https://developer-pacenotes.com/"
+languageCode = "en-us"
+title = "Developer Pacenotes"
+theme = "blackburn"
+paginate = 8
+
+[params]
+	author = "Dimitar Trendafilov"
+	subtitle = "Flat out over problems. Don't cut!"
+	brand = "Developer<br/>Pacenotes"
+	dateFormat = "02 Jan 2006"
+	googleAnalytics = "UA-109980000-1"
+
+[menu]
+	[[menu.main]]
+		name = "Home"
+		pre = "<i class='fa fa-home fa-fw'></i>"
+		weight = 1
+		identifier = "home"
+		url = "/"
+	[[menu.main]]
+		name = "About"
+		pre = "<i class='fa fa-user fa-fw'></i>"
+		weight = 2
+		url = "/about/"
+[social]
+	twitter = "DimitarNT"
+	github = "dimitarcl"
