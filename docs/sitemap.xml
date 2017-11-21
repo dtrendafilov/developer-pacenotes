@@ -3,29 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://developer-pacenotes.com/posts/hello/</loc>
+    <loc>http://www.developer-pacenotes.com/posts/hello/</loc>
     <lastmod>2017-11-20T17:54:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://developer-pacenotes.com/categories/</loc>
+    <loc>http://www.developer-pacenotes.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://developer-pacenotes.com/</loc>
-    <lastmod>2017-11-20T17:54:55+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://developer-pacenotes.com/posts/</loc>
+    <loc>http://www.developer-pacenotes.com/</loc>
     <lastmod>2017-11-20T17:54:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://developer-pacenotes.com/tags/</loc>
+    <loc>http://www.developer-pacenotes.com/posts/</loc>
+    <lastmod>2017-11-20T17:54:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.developer-pacenotes.com/tags/</loc>
     <priority>0</priority>
   </url>
   

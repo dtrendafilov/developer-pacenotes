@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Developer Pacenotes</title>
-    <link>https://developer-pacenotes.com/</link>
+    <link>http://www.developer-pacenotes.com/</link>
     <description>Recent content on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 20 Nov 2017 17:54:55 +0200</lastBuildDate>
     
-	<atom:link href="https://developer-pacenotes.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.developer-pacenotes.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello</title>
-      <link>https://developer-pacenotes.com/posts/hello/</link>
+      <link>http://www.developer-pacenotes.com/posts/hello/</link>
       <pubDate>Mon, 20 Nov 2017 17:54:55 +0200</pubDate>
       
-      <guid>https://developer-pacenotes.com/posts/hello/</guid>
+      <guid>http://www.developer-pacenotes.com/posts/hello/</guid>
       <description>&lt;h1 id=&#34;hello&#34;&gt;Hello&lt;/h1&gt;
 
 &lt;p&gt;This is a smoke post to check that everything is OK.&lt;/p&gt;
