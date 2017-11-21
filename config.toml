@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Developer Pacenotes"
 theme = "blackburn"
 paginate = 8
+publishDir = "docs"
 
 [params]
 	author = "Dimitar Trendafilov"
