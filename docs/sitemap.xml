@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.developer-pacenotes.com/posts/electron/</loc>
+    <lastmod>2017-11-20T19:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.developer-pacenotes.com/posts/hello/</loc>
     <lastmod>2017-11-20T17:54:55+02:00</lastmod>
   </url>
@@ -14,13 +19,13 @@
   
   <url>
     <loc>http://www.developer-pacenotes.com/</loc>
-    <lastmod>2017-11-20T17:54:55+02:00</lastmod>
+    <lastmod>2017-11-20T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.developer-pacenotes.com/posts/</loc>
-    <lastmod>2017-11-20T17:54:55+02:00</lastmod>
+    <lastmod>2017-11-20T19:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

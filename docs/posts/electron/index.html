@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109980000-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109980000-1');
+</script>
+
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.31" />
+
+  <title>Electron is bad, but Electron apps are here to stay &middot; Developer Pacenotes</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Developer<br/>Pacenotes</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/DimitarNT" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/dimitarcl" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Electron is bad, but Electron apps are here to stay</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>20 Nov 2017</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  <p>Ever since Electron has been created a lot has been discussed about the
+practicality of using <a href="https://news.ycombinator.com/item?id=14245183">it for powering desktop applications</a>.
+Electron-based apps tend to have high CPU usage and even higher memory usage,
+easily taking gigabytes of RAM.They reduce battery life and generally make
+your PC feel like an electric typewriter.</p>
+
+<p></p>
+
+<p>Electron is a magical combination of node.js and Chromium. It allows you to
+have a web application that has access to the OS and effectively have a
+desktop app. Both CPU and memory usage are caused by Chromium. It is no
+surprise - Chromium is designed to show every website out there in the most
+robust and secure way, while providing tons of extra features - from spell
+checking to Safe Browsing and extensions. Performance comes somewhere after
+that.</p>
+
+<p>Here is a screenshot of the memory and CPU usage for <a href="https://code.visualstudio.com/">Visual Studio
+Code</a>, while editing this blog post.</p>
+
+
+<figure >
+    
+        <img src="/img/vscode.jpg" />
+    
+    
+    <figcaption>
+        <h4>Visual Studio Code with 9 processes and 555 MB for a single file and markdown preview</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>There has been a <a href="https://medium.com/@caspervonb/electron-is-cancer-b066108e6c32">call for going back to native</a> applications. But
+they are not perfect either - they are not portable, sometimes even between
+different versions of the same OS. They do provide the native look and feel
+of the OS that you are using, but that, in my opinion, is not a great
+feature. As someone who is using Windows, Mac OS X and Linux on regular
+basis, often literally all-tabbing between them, I much more prefer to have
+the same experience on all of them - same buttons, same shortcuts. Mentally
+switching between the OSes 10 times an hour will significantly reduce my
+productivity. Native apps always require a chunky download and install, just
+even to give the application a try. Compare this to trying out a web
+application - click a link in your already present and always open browser.
+The web has always had the immensely lower barrier to entry. That is why so
+many new applications start their life as web apps. And updates - when did
+you had to restart your browser to see the new version of an web app? Unless
+I need to change the underlying Electron version, I can deploy newer and
+better versions of my application every minute. And no one will ever have to
+restart my app.</p>
+
+<p>A lot of effort has been invested by popular Electron applications to reduce
+their resource usage. Slack, for example, <a href="https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb">cut down tabs</a> for unused
+teams and migrated from <a href="https://slack.engineering/growing-pains-migrating-slacks-desktop-app-to-browserview-2759690d9c7b"><code>&lt;webview&gt;</code> to <code>BrowserView</code></a>. It took me
+some time to grasp how actually the <a href="https://blog.figma.com/introducing-browserview-for-electron-7b40b4b493d5"><code>BrowserView</code></a> is helping
+them. Here is a simpler explanation.</p>
+
+<p>First you need to know a little bit how Chromium works. It has a
+multi-process architecture (link to our blog). In short - it creates a single
+process for every web page, iframe or plugin present on a webpage. There are
+two additional processes - one that controls the all the processes and
+communicates with the OS, and a GPU process - the one that draws everything.
+Electron shows web content inside webview, so it creates an additional process
+BrowserView shows the web content directly, with no extra process, but you
+have to size and move the window without the layout powers of CSS.</p>
+
+<p>So going away from <code>&lt;webview&gt;</code> to a <code>BrowserView</code> for Slack meant that they
+got rid of one process of all. And they had to change a lot of their code in
+order to do that.</p>
+
+<p>Meanwhile, other industries such as gaming, embedded and automotive have
+realized the need for a fast and resource efficient web renderer. We, at
+<a href="https://coherent-labs.com">Coherent Labs</a>, have created
+<a href="https://lensreality.com">LensVR</a>, a lean and mean web renderer that can
+<a href="https://lensreality.com/lensvrrenderingpart1/">render html at 1000 frames per second</a>.</p>
+
+
+<figure >
+    
+        <img src="/img/editor.jpg" />
+    
+    
+    <figcaption>
+        <h4>The Coherent Editor written in TypeScript and HTML and running inside Coherent GT</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>So just as the terrible browsers circa 2000-2005 did not stop the web from
+becoming the ubiquitous platform, the Electron of today won&rsquo;t stop web-based
+applications from running on the desktop. We have to ditch Chromium for a
+better rendering engine. So what do you think? Would you code your next
+desktop app in a leaner and meaner Electron or go back to native? I do
+believe that web apps on the desktop are here to stay, so we will be porting
+a couple of Electron applications to Lens in next weeks. Which one should we
+start?</p>
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://www.developer-pacenotes.com/posts/hello/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://www.developer-pacenotes.com/posts/hello/">Hello</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'developer-pacenotes-com';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://www.developer-pacenotes.com/js/ui.js"></script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109980000-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109980000-1');
+</script>
+
+
+
+
+
+</body>
+</html>
+

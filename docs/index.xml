@@ -6,10 +6,25 @@
     <description>Recent content on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2017 17:54:55 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Nov 2017 19:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://www.developer-pacenotes.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Electron is bad, but Electron apps are here to stay</title>
+      <link>http://www.developer-pacenotes.com/posts/electron/</link>
+      <pubDate>Mon, 20 Nov 2017 19:00:00 +0200</pubDate>
+      
+      <guid>http://www.developer-pacenotes.com/posts/electron/</guid>
+      <description>&lt;p&gt;Ever since Electron has been created a lot has been discussed about the
+practicality of using &lt;a href=&#34;https://news.ycombinator.com/item?id=14245183&#34;&gt;it for powering desktop applications&lt;/a&gt;.
+Electron-based apps tend to have high CPU usage and even higher memory usage,
+easily taking gigabytes of RAM.They reduce battery life and generally make
+your PC feel like an electric typewriter.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Hello</title>
