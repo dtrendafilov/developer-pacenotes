@@ -1,31 +1,47 @@
-baseURL = "http://www.developer-pacenotes.com/"
+baseURL = "/"
 languageCode = "en-us"
 title = "Developer Pacenotes"
-theme = "blackburn"
-paginate = 8
+theme = "future-imperfect"
+paginate = 5
 publishDir = "docs"
+disqusShortname = "developer-pacenotes-com"
+preserveTaxonomyNames = true
 
 [params]
 	author = "Dimitar Trendafilov"
 	subtitle = "Flat out over problems. Don't cut!"
-	brand = "Developer<br/>Pacenotes"
-	dateFormat = "02 Jan 2006"
+	navbarTitle = "Developer Pacenotes"
+	socialAppearAtBottom = true
+	socialAppearAtTop = false
 	googleAnalytics = "UA-109980000-1"
-	disqus = "developer-pacenotes-com"
-	RSSLink = "/index.xml"
 
-[menu]
-	[[menu.main]]
-		name = "Home"
-		pre = "<i class='fa fa-home fa-fw'></i>"
-		weight = 1
-		identifier = "home"
-		url = "/"
-	[[menu.main]]
-		name = "About"
-		pre = "<i class='fa fa-user fa-fw'></i>"
-		weight = 2
-		url = "/about/"
+[params.intro]
+	# header = "Developer Pacenotes"
+	paragraph = "Flat out over problems.<br/><b>Don't cut!</b>"
+
+[params.postAmount]
+	sidebar = 3
+
+# Sets the menu items in the navigation ba Identifier prepends a Font Awesome icon to the menu item
+[[menu.main]]
+  name = "Categories"
+  url = "/categories/"
+  identifier = "fa fa-sitemap"
+  weight = 2
+
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  identifier = "fa fa-id-card-o"
+  weight = 2
+
 [social]
 	twitter = "DimitarNT"
 	github = "dimitarcl"
+	email = "dimitar@coherent-labs.com"
+
+[taxonomies]
+	tag = "tags"
+	category = "categories"
+	series = "series"

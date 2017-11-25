@@ -1,8 +1,10 @@
 ---
 title: "Electron is bad, but Electron apps are here to stay"
-date: 2017-11-20T19:00:00+02:00
+date: 2017-11-23T19:00:00+02:00
 type: post
 draft: false
+categories: [ "web" ]
+tags: [ "web", "electron" ]
 ---
 
 Ever since Electron has been created a lot has been discussed about the
@@ -26,7 +28,7 @@ that.
 Here is a screenshot of the memory and CPU usage for [Visual Studio
 Code](https://code.visualstudio.com/), while editing this blog post.
 
-{{< figure src="/img/vscode.jpg" title="Visual Studio Code with 9 processes and 555 MB for a single file and markdown preview" >}}
+{{< fancybox "/img" "vscode.jpg" "Visual Studio Code with 9 processes and 555 MB for a single file and markdown preview" "electon" >}}
 
 There has been a [call for going back to native][native] applications. But
 they are not perfect either - they are not portable, sometimes even between
@@ -79,7 +81,7 @@ realized the need for a fast and resource efficient web renderer. We, at
 
 [fps1000]: https://lensreality.com/lensvrrenderingpart1/
 
-{{< figure src="/img/editor.jpg" title="The Coherent Editor written in TypeScript and HTML and running inside Coherent GT" >}}
+{{< fancybox "/img" "editor.jpg" "The Coherent Editor written in TypeScript and HTML and running inside Coherent GT" "electon" >}}
 
 So just as the terrible browsers circa 2000-2005 did not stop the web from
 becoming the ubiquitous platform, the Electron of today won't stop web-based
