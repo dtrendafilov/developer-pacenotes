@@ -2,6 +2,7 @@
 title: "Hello"
 date: 2017-11-20T17:54:55+02:00
 draft: false
+expiryDate: 2017-11-25
 type: post
 ---
 # Hello
