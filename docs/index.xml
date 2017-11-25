@@ -26,5 +26,16 @@ your PC feel like an electric typewriter.&lt;/p&gt;
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Tue, 21 Nov 2017 09:41:49 +0200</pubDate>
+      
+      <guid>/about/</guid>
+      <description>My name is Dimitar and I am creating the user interface middleware for your next game at Coherent Labs.
+This is my blog about software development and includes my notes from this rally - from an idea to a product. Topics range from coding, mostly in C++, through practices to management.
+You can reach me via email, Twitter, GitHib.</description>
+    </item>
+    
   </channel>
 </rss>
