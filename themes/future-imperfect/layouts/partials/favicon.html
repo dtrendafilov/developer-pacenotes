@@ -1,19 +1,12 @@
 {{ if .Site.Params.loadFavicon }}
-  {{ with .Site.Params.faviconVersion }}
-    {{ $.Scratch.Set "favVer" "-" }}
-    {{ $.Scratch.Add "favVer" . }}
-  {{ else }}
-    {{ $.Scratch.Set "favVer" "" }}
-  {{ end }}
-
-  {{ $favVer := $.Scratch.Get "favVer" }}
-
-  <link rel="apple-touch-icon-precomposed" href='{{ "favicon/apple-touch-icon-precomposed" | relURL }}{{ $favVer }}.png'>
-  <link rel="icon" href='{{ "favicon/favicon" | relURL }}{{ $favVer }}.png'>
-  <!--[if IE]><link rel="shortcut icon" href='/favicon{{ $favVer }}.ico'><![endif]-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <!--[if IE]><link rel="shortcut icon" href='/img/favicon.ico'><![endif]-->
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-TileImage" content='{{ "favicon/mstile" | relURL }}{{ $favVer }}.png'>
+  <meta name="msapplication-TileImage" content="/img/mstile-150x150.png">
   <meta name="application-name" content="{{ .Site.Title }}">
   <meta name="msapplication-tooltip" content="{{ .Site.Params.Description }}">
-  <meta name="msapplication-config" content='{{ "favicon/ieconfig.xml" | relURL }}'>
 {{ end }}
