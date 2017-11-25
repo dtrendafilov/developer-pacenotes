@@ -14,6 +14,7 @@ preserveTaxonomyNames = true
 	socialAppearAtBottom = true
 	socialAppearAtTop = false
 	googleAnalytics = "UA-109980000-1"
+	loadFavicon = true
 
 [params.intro]
 	# header = "Developer Pacenotes"
