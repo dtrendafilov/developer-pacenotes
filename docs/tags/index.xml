@@ -2,13 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Developer Pacenotes</title>
-    <link>http://www.developer-pacenotes.com/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 23 Nov 2017 19:00:00 +0200</lastBuildDate>
     
-	<atom:link href="http://www.developer-pacenotes.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Electron</title>
+      <link>/tags/electron/</link>
+      <pubDate>Thu, 23 Nov 2017 19:00:00 +0200</pubDate>
+      
+      <guid>/tags/electron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>/tags/web/</link>
+      <pubDate>Thu, 23 Nov 2017 19:00:00 +0200</pubDate>
+      
+      <guid>/tags/web/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

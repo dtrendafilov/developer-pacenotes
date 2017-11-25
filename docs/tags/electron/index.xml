@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Developer Pacenotes</title>
-    <link>/</link>
-    <description>Recent content on Developer Pacenotes</description>
+    <title>Electron on Developer Pacenotes</title>
+    <link>/tags/electron/</link>
+    <description>Recent content in Electron on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Nov 2017 19:00:00 +0200</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/electron/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
