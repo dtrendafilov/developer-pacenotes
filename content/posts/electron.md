@@ -54,20 +54,22 @@ A lot of effort has been invested by popular Electron applications to reduce
 their resource usage. Slack, for example, [cut down tabs][tabs] for unused
 teams and migrated from [`<webview>` to `BrowserView`][browser]. It took me
 some time to grasp how actually the [`BrowserView`][browserview] is helping
-them. Here is a simpler explanation.
+them. So, below is a simpler explanation.
 
 [tabs]: https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb
 [browser]: https://slack.engineering/growing-pains-migrating-slacks-desktop-app-to-browserview-2759690d9c7b
 [browserView]: https://blog.figma.com/introducing-browserview-for-electron-7b40b4b493d5
 
 First you need to know a little bit how Chromium works. It has a
-multi-process architecture (link to our blog). In short - it creates a single
-process for every web page, iframe or plugin present on a webpage. There are
-two additional processes - one that controls the all the processes and
+[multi-process architecture][chrome]. In short - it creates a single process
+for every web page, iframe or plugin present on a webpage. There are two
+additional processes - one that controls the all the processes and
 communicates with the OS, and a GPU process - the one that draws everything.
-Electron shows web content inside webview, so it creates an additional process
-BrowserView shows the web content directly, with no extra process, but you
-have to size and move the window without the layout powers of CSS.
+Electron shows web content inside webview, so it creates an additional
+process BrowserView shows the web content directly, with no extra process,
+but you have to size and move the window without the layout powers of CSS.
+
+[chrome]: https://www.chromium.org/developers/design-documents/multi-process-architecture
 
 So going away from `<webview>` to a `BrowserView` for Slack meant that they
 got rid of one process of all. And they had to change a lot of their code in
