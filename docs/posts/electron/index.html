@@ -80,7 +80,7 @@ your PC feel like an electric typewriter.
 
 <meta itemprop="datePublished" content="2017-11-23T19:00:00&#43;02:00" />
 <meta itemprop="dateModified" content="2017-11-23T19:00:00&#43;02:00" />
-<meta itemprop="wordCount" content="727">
+<meta itemprop="wordCount" content="724">
 
 
 
@@ -415,16 +415,16 @@ restart my app.</p>
 their resource usage. Slack, for example, <a href="https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb">cut down tabs</a> for unused
 teams and migrated from <a href="https://slack.engineering/growing-pains-migrating-slacks-desktop-app-to-browserview-2759690d9c7b"><code>&lt;webview&gt;</code> to <code>BrowserView</code></a>. It took me
 some time to grasp how actually the <a href="https://blog.figma.com/introducing-browserview-for-electron-7b40b4b493d5"><code>BrowserView</code></a> is helping
-them. Here is a simpler explanation.</p>
+them. So, below is a simpler explanation.</p>
 
 <p>First you need to know a little bit how Chromium works. It has a
-multi-process architecture (link to our blog). In short - it creates a single
-process for every web page, iframe or plugin present on a webpage. There are
-two additional processes - one that controls the all the processes and
+<a href="https://www.chromium.org/developers/design-documents/multi-process-architecture">multi-process architecture</a>. In short - it creates a single process
+for every web page, iframe or plugin present on a webpage. There are two
+additional processes - one that controls the all the processes and
 communicates with the OS, and a GPU process - the one that draws everything.
-Electron shows web content inside webview, so it creates an additional process
-BrowserView shows the web content directly, with no extra process, but you
-have to size and move the window without the layout powers of CSS.</p>
+Electron shows web content inside webview, so it creates an additional
+process BrowserView shows the web content directly, with no extra process,
+but you have to size and move the window without the layout powers of CSS.</p>
 
 <p>So going away from <code>&lt;webview&gt;</code> to a <code>BrowserView</code> for Slack meant that they
 got rid of one process of all. And they had to change a lot of their code in
