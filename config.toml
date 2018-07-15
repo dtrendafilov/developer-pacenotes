@@ -9,7 +9,7 @@ preserveTaxonomyNames = true
 
 [params]
 	author = "Dimitar Trendafilov"
-	subtitle = "Flat out over problems. Don't cut!"
+	subtitle = "Flat over problems. Don't cut!"
 	navbarTitle = "Developer Pacenotes"
 	socialAppearAtBottom = true
 	socialAppearAtTop = false
@@ -18,7 +18,7 @@ preserveTaxonomyNames = true
 
 [params.intro]
 	# header = "Developer Pacenotes"
-	paragraph = "Flat out over problems.<br/><b>Don't cut!</b>"
+	paragraph = "Flat over problems.<br/><b>Don't cut!</b>"
 
 [params.postAmount]
 	sidebar = 3
