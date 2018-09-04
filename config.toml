@@ -4,7 +4,8 @@ title = "Developer Pacenotes"
 theme = "future-imperfect"
 paginate = 5
 publishDir = "docs"
-disqusShortname = "developer-pacenotes-com"
+# Disable disqus comments
+# disqusShortname = "developer-pacenotes-com"
 preserveTaxonomyNames = true
 
 [params]
