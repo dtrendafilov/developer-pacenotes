@@ -7,6 +7,8 @@ draft: true
 
 ## Conducting code reviews
 
+[XKCD](https://xkcd.com/1513/)
+
 Code reviews are a great practice. They allow for:
 
 - shared knowledge
@@ -32,7 +34,7 @@ The reviewer:
 - You are reviewing the code, not the person. Avoid using *you* in the comments,
   it is easily replaceable by *we*.
 
-The person that wrote the code:
+The author of the code:
 
 - The issues found during the review are issues of the code, not your own. You
   will do better next time.
@@ -46,11 +48,25 @@ https://www.youtube.com/watch?v=t6L8b4tUmeE
 1. Understand what the code is supposed to do on high level and then drill down.
 2. Understand what the code actually does. Mark any differences between the
    intended effects and the actual ones.
-3. Does the commit message correctly describe the changes?
-4. 500 LOC / Hour
-5. docs for public changes
-6. Timing issues
-7. Multi-threaded code
+3. Does the code confirm to the coding standards? Do they follow DRY, KISS,
+   SOLID?
+4. Are the changes covered by tests?
+5. Does the commit message correctly describe the changes?
+6. 500 LOC / Hour
+7. Docs for public changes
+8. Timing issues
+9. Multi-threaded code
+
+#### Coherent Labs Specific
+
+1. Do the changes conform to the initial design document?
+2. Any seemingly unrelated change?
+3. Artifacts for public changes
+    - documentation
+    - packaging
+    - samples
+    - launcher
+4. Are new headers added to project files? Are the filters ok?
 
 ### Code smells
 
@@ -59,8 +75,13 @@ the code that possibly indicates a deeper problem.
 
 #### General code smells
 
-1. Treat hard to understand code as wrong. A given piece of code should be
-   understandable and its correctness verifiable in a couple of minutes.
+##### 1. Treat hard to understand code as wrong.
+
+A given piece of code should be understandable and its correctness verifiable in
+a couple of minutes. I strongly advocate that this shall be followed no matter
+whether the reviewer is an expert in the subsystem under review or not. Everyone
+should be able to understand a small piece of code in minutes, once having a
+high-level grasp of the subsystem and the project.
 
 #### C++ specific code smells
 
@@ -87,7 +108,7 @@ compelling reasons like:
   to be find an element
 - element must not be relocated
 
-The container invalidation is the something that can be easily overlooked when
+The container invalidation is something that can be easily overlooked when
 writing the code and what is worse - it will appear to work correctly for most
 test cases. Until the container relocates is storage ...
 
@@ -110,6 +131,8 @@ permissive with them.
 1. The cast used is the safeest one possible.
 2. The types are correct.
 3. The level of indirection is not casted away, i.e. casting from `T**` to `Y*`.
+4. `const_cast` is usually a *design* smell, consider whether that is really the
+   way to go
 
 ##### 4. Assumptions that are not asserted or checked
 
@@ -145,8 +168,11 @@ There are three major sources of issues when working with strings:
    do not mix well. Using anything but unicode conversion library will most
    likely result in bugs when non-ascii symbols are present.
 
-3. The `std::basic_string` API is full of taking indices, so it very easy to
-   make off by one error when using it.
+3. Check that the code assumes the correct encoding of the string, otherwise it
+   will still be garbage.
+
+4. The `std::basic_string` API is full of taking indices, so it very easy to
+   make off by one error.
 
 ##### 6. Smart pointers
 
@@ -156,10 +182,16 @@ they have their own set of caveats.
 Most shared pointers use reference counting, so the following must be checked:
 
 1. Cyclic references
-2. *The Create Rule* - some objects are created with one reference in them, so
-   they must be released explicitly when they are no longer used. When such
-   objects are stored in a smart pointer, this reference must be *adopted*,
-   otherwise it will leak.
+
+2. [*The Create Rule*][create_rule] - some objects are created with one
+   reference in them, so they must be released explicitly when they are no
+   longer used. When such objects are stored in a smart pointer, this reference
+   must be *adopted*, otherwise it will leak.
+
+[create_rule]: https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/Concepts/Ownership.html
+
+3. No naked `new` and `delete` - these are almost always not necessary. Require
+   extra care for the proper management of the objects allocated this way.
 4. Two shared pointers to the same object. That is not an issue with *intrusive
    pointer*
 
@@ -187,7 +219,12 @@ object.
    that some compilers will move the padding around when there is inheritance in
    the mix.
 
-##### 9. Float precision
+Consider adding the padding explictly in the object to make it visible:
+
+    char __padding[N] = { 0 };
+
+
+##### 9. Float precision and NAN
 ##### 10. Error checking for external APIs
 
 #### Coherent Labs specific code smells
@@ -207,7 +244,9 @@ The memory allocators rely on specific thread local variables to be set. So each
 entry point of our products must be guarded with entry point like
 `COHERENT_UIGT_ENTRY_POINT`.
 
-##### 3. Timing issues in tests
+##### 3. Types used as task parameters
+
+##### 4. Timing issues in tests
 
 Tests tend to depend on time for loading resources and similar. Every *sleep*
 and *wait* in tests should be treated as extremely smelly. Most cases can be
