@@ -3,7 +3,7 @@ title: "Starting a blog"
 date: 2018-09-06T17:10:27+03:00
 type: post
 categories: [ "web" ]
-draft: true
+draft: false
 ---
 # Starting a blog
 
