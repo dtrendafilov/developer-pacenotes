@@ -117,9 +117,13 @@ This a bit a general category, so here are the most frequent examples:
    `.front()`, `.back()` on an empty container.
 2. Iterator returned by `find` is not the *end* iterator.
 
-        v.erase(std::remove_if(v.begin(), v.end(), [](auto& e) {
-            return e.IsNotUsed();
-        }, v.end());
+    {{< highlight cpp >}}
+v.erase(std::remove_if(v.begin(), v.end(), [](auto& e) {
+    return e.IsNotUsed();
+}, v.end());
+    {{</ highlight >}}
+
+1. Something
 
 ##### 5. Operations with strings
 
