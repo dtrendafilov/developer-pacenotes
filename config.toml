@@ -1,12 +1,17 @@
 baseURL = "https://developer-pacenotes.com/"
 languageCode = "en-us"
 title = "Developer Pacenotes"
-theme = "future-imperfect"
+theme = ["future-imperfect", "reveal-hugo"]
 paginate = 5
 publishDir = "docs"
 # Disable disqus comments
 # disqusShortname = "developer-pacenotes-com"
 preserveTaxonomyNames = true
+
+[outputFormats.Reveal]
+    baseName = "index"
+    mediaType = "text/html"
+    isHTML = true
 
 [params]
 	author = "Dimitar Trendafilov"
@@ -23,6 +28,9 @@ preserveTaxonomyNames = true
 
 [params.postAmount]
 	sidebar = 3
+
+[params.reveal_hugo]
+    highlight_theme = "monokai"
 
 # Sets the menu items in the navigation ba Identifier prepends a Font Awesome icon to the menu item
 [[menu.main]]
