@@ -39,6 +39,8 @@ The person that wrote the code:
 
 Besides that, all the advice is a bit too generic to be useful. 
 
+https://www.youtube.com/watch?v=t6L8b4tUmeE
+
 ### Conducting code reviews
 
 1. Understand what the code is supposed to do on high level and then drill down.
