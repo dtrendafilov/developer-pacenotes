@@ -53,17 +53,17 @@ It focuses on:
 ## Posting a code review
 
 1. Post a separate review for each meaningful change
-	- unrelated small improvements can get a in-place review
+    - unrelated small improvements can get a in-place review
 2. Remove generated files from the review
-	- unless you have changed the code that generates them
+    - unless you have changed the code that generates them
 
 ---
 ## Posting a code review
 
 3. Explain how you have tested the changes
 4. Add any notes that will help the reviewer
-	- link to design document
-	- link to JIRA task
+    - link to design document
+    - link to JIRA task
 
 ---
 ## Posting a code review
@@ -577,13 +577,13 @@ answering.
 
 ---
 
-	case CommandType::FillText:
-	{
-		TmpVector<TextRunProps> runs;
-		TmpVector<TypefacePtr> typefaces;
-		runs.reserve(batch.Commands.size());
-		// ...
-	}
+    case CommandType::FillText:
+    {
+        TmpVector<TextRunProps> runs;
+        TmpVector<TypefacePtr> typefaces;
+        runs.reserve(batch.Commands.size());
+        // ...
+    }
 
 ---
 
@@ -591,16 +591,16 @@ answering.
 
 ---
 
-	WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
-										JSStringRef jsStr)
-	{
-		const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
-		LChar* strData = nullptr;
-		auto str = WTF::String::createUninitialized(utf8Max, strData);
-		JSStringGetUTF8CString(jsStr, (char*)strData, utf8Max);
+    WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                        JSStringRef jsStr)
+    {
+        const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
+        LChar* strData = nullptr;
+        auto str = WTF::String::createUninitialized(utf8Max, strData);
+        JSStringGetUTF8CString(jsStr, (char*)strData, utf8Max);
 
-		return str;
-	}
+        return str;
+    }
 
 ---
 
@@ -609,29 +609,29 @@ answering.
 
 ---
 
-	void UISystemImpl::RegisterGamepad(unsigned id, const char* info,
-									   unsigned axesCount,
-									   unsigned buttonsCount)
-	{
-		m_GamepadProvider->RegisterGamepad(id, info, axesCount,
-										   buttonsCount);
-	}
+    void UISystemImpl::RegisterGamepad(unsigned id, const char* info,
+                                       unsigned axesCount,
+                                       unsigned buttonsCount)
+    {
+        m_GamepadProvider->RegisterGamepad(id, info, axesCount,
+                                           buttonsCount);
+    }
 
 ---
 
-	WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
-										JSStringRef jsStr)
-	{
-		const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
-		LChar* strData = nullptr;
-		auto str = WTF::String::createUninitialized(utf8Max, strData);
+    WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                        JSStringRef jsStr)
+    {
+        const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
+        LChar* strData = nullptr;
+        auto str = WTF::String::createUninitialized(utf8Max, strData);
 
-		auto length = JSStringGetUTF8CString(jsStr, (char*)strData,
-											 utf8Max);
-		str.remove(length - 1, (int)0x7ffffff);
+        auto length = JSStringGetUTF8CString(jsStr, (char*)strData,
+                                             utf8Max);
+        str.remove(length - 1, (int)0x7ffffff);
 
-		return str;
-	}
+        return str;
+    }
 
 ---
 
@@ -639,13 +639,13 @@ answering.
 
 ---
 
-	JSRetainPtr<JSStringRef> eventName(JSValueToStringCopy(context,
-									   arguments[0],
-									   exception));
+    JSRetainPtr<JSStringRef> eventName(JSValueToStringCopy(context,
+                                       arguments[0],
+                                       exception));
 
-	Coherent::String name;
-	auto chars = JSStringGetCharactersPtr(eventName.get());
-	name.assign(chars, chars + JSStringGetLength(eventName.get()));
+    Coherent::String name;
+    auto chars = JSStringGetCharactersPtr(eventName.get());
+    name.assign(chars, chars + JSStringGetLength(eventName.get()));
 
 ---
 
@@ -654,34 +654,34 @@ answering.
 
 ---
 
-	CohString returnString("return ");
-	returnString += evaluationString;
-	JSValueRef exception = nullptr;
-	JSObjectRef jsFunc = nullptr;
-	if (scopeParams.isEmpty())
-	{
-		jsFunc = JSObjectMakeFunction(jsContext, nullptr, 0, nullptr,
-			MakeJSStringPtr(returnString.data()).get(),
-			nullptr, 0, &exception);
-	}
+    CohString returnString("return ");
+    returnString += evaluationString;
+    JSValueRef exception = nullptr;
+    JSObjectRef jsFunc = nullptr;
+    if (scopeParams.isEmpty())
+    {
+        jsFunc = JSObjectMakeFunction(jsContext, nullptr, 0, nullptr,
+            MakeJSStringPtr(returnString.data()).get(),
+            nullptr, 0, &exception);
+    }
 
 ---
 
 - `string::data` is not null terminated
 
 ---
-	virtual void InitFileReader(AAssetManager* assetManager,
-								const char* fn) override
-	{
-		AAsset* m_Asset = AAssetManager_open(assetManager,
-											 NormalizePath(fn).c_str(),
-											 AASSET_MODE_BUFFER);
-		if (m_Asset)
-		{
-			AAsset_seek(m_Asset, 0, SEEK_SET);
-			m_FileSize = AAsset_getRemainingLength(m_Asset);
-		}
-	}
+    virtual void InitFileReader(AAssetManager* assetManager,
+                                const char* fn) override
+    {
+        AAsset* m_Asset = AAssetManager_open(assetManager,
+                                             NormalizePath(fn).c_str(),
+                                             AASSET_MODE_BUFFER);
+        if (m_Asset)
+        {
+            AAsset_seek(m_Asset, 0, SEEK_SET);
+            m_FileSize = AAsset_getRemainingLength(m_Asset);
+        }
+    }
 
 ---
 
@@ -689,17 +689,17 @@ answering.
 
 ---
 
-	virtual unsigned Read(unsigned start,
-						  unsigned char* buffer,
-						  unsigned end) override
-	{
-		end = std::min(end, unsigned(m_FileSize));
-		
- 		assert(start >= 0);
-		assert((end >= 0));
-		assert((end >= start));
-		// ...
-	}
+    virtual unsigned Read(unsigned start,
+                          unsigned char* buffer,
+                          unsigned end) override
+    {
+        end = std::min(end, unsigned(m_FileSize));
+
+        assert(start >= 0);
+        assert((end >= 0));
+        assert((end >= start));
+        // ...
+    }
 
 ---
 
@@ -708,19 +708,19 @@ answering.
 
 ---
 
-	if (propValue.ConvertTo(truthy))
-	{
-		truthy = evaluator.HasNegation ? !truthy : truthy;
-		ScriptVector<NodePtr> deadNodes;
-		// Data bind if has only 1 set of evaluators.
-		evaluator.Children.resize(1);
-		expression->EvaluateIf(truthy, element, deadNodes,
-							   evaluator.Children[0].Evaluators);
-		EvaluateGroup(evaluator.Children[0], evaluator,
-					  propValue, binder);
+    if (propValue.ConvertTo(truthy))
+    {
+        truthy = evaluator.HasNegation ? !truthy : truthy;
+        ScriptVector<NodePtr> deadNodes;
+        // Data bind if has only 1 set of evaluators.
+        evaluator.Children.resize(1);
+        expression->EvaluateIf(truthy, element, deadNodes,
+                               evaluator.Children[0].Evaluators);
+        EvaluateGroup(evaluator.Children[0], evaluator,
+                      propValue, binder);
 
-		ReleaseDeadNodes(deadNodes, binder);
-	}
+        ReleaseDeadNodes(deadNodes, binder);
+    }
 
 ---
 
@@ -728,13 +728,13 @@ answering.
 
 ---
 
-	WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
-										JSValueRef jsValue)
-	{
-		JSStringRef jsStr = JSValueToStringCopy(jsContext,
-												jsValue, nullptr);
-		return JSStringToUTF8WTFString(jsContext, jsStr);
-	}
+    WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                        JSValueRef jsValue)
+    {
+        JSStringRef jsStr = JSValueToStringCopy(jsContext,
+                                                jsValue, nullptr);
+        return JSStringToUTF8WTFString(jsContext, jsStr);
+    }
 
 ---
 
@@ -743,16 +743,16 @@ answering.
 
 ---
 
-	bool ScriptValue::GetLength(ScriptingEngine engine, int& len)
-	{
-		auto context = ToJSCContext(engine);
-		auto js = ToJSC(m_Handle);
-		auto propName = JSStringCreateWithUTF8CString("length");
-		auto obj = JSValueToObject(context, js, nullptr);
-		if (obj && JSObjectHasProperty(context, obj, propName))
-		{
-			// ...
-		}
+    bool ScriptValue::GetLength(ScriptingEngine engine, int& len)
+    {
+        auto context = ToJSCContext(engine);
+        auto js = ToJSC(m_Handle);
+        auto propName = JSStringCreateWithUTF8CString("length");
+        auto obj = JSValueToObject(context, js, nullptr);
+        if (obj && JSObjectHasProperty(context, obj, propName))
+        {
+            // ...
+        }
 
 ---
 
