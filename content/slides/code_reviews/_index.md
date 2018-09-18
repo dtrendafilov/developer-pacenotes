@@ -616,6 +616,9 @@ answering.
         m_GamepadProvider->RegisterGamepad(id, info, axesCount,
                                            buttonsCount);
     }
+---
+
+- Entry points, needs `COHERENT_UIGT_ENTRY_POINT`.
 
 ---
 
@@ -705,6 +708,23 @@ answering.
 
 - `end` changes meaning from requested end to possible end - better naming perhaps
 - first two asserts don't test anything, `unsigned` >= 0
+
+---
+
+	void DataBindExpression::EvaluateIf(bool value, Element* parent,
+										TmpVector<NodePtr>& deadNodes)
+	{
+		TempAllocatorScope scope;
+		if (!value)
+		{
+			deadNodes.push_back(parent->RemoveChild(children[index]));
+		}
+	}
+
+---
+
+- `deadNodes` can grow in the current `TempAllocatorScope`, so when the function
+  returns - the vector will be invalid
 
 ---
 
