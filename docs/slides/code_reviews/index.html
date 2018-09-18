@@ -125,7 +125,7 @@ answering.</p></section><section><pre><code>ViewBinder::~ViewBinder() {
     m_GamepadProvider-&gt;RegisterGamepad(id, info, axesCount,
                                        buttonsCount);
 }
-</code></pre></section><section><pre><code>WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+</code></pre></section><section><ul><li>Entry points, needs <code>COHERENT_UIGT_ENTRY_POINT</code>.</li></ul></section><section><pre><code>WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
                                     JSStringRef jsStr)
 {
     const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
@@ -178,7 +178,17 @@ if (scopeParams.isEmpty())
     assert((end &gt;= start));
     // ...
 }
-</code></pre></section><section><ul><li><code>end</code> changes meaning from requested end to possible end - better naming perhaps</li><li>first two asserts don&rsquo;t test anything, <code>unsigned</code> &gt;= 0</li></ul></section><section><pre><code>if (propValue.ConvertTo(truthy))
+</code></pre></section><section><ul><li><code>end</code> changes meaning from requested end to possible end - better naming perhaps</li><li>first two asserts don&rsquo;t test anything, <code>unsigned</code> &gt;= 0</li></ul></section><section><pre><code>void DataBindExpression::EvaluateIf(bool value, Element* parent,
+                                    TmpVector&lt;NodePtr&gt;&amp; deadNodes)
+{
+    TempAllocatorScope scope;
+    if (!value)
+    {
+        deadNodes.push_back(parent-&gt;RemoveChild(children[index]));
+    }
+}
+</code></pre></section><section><ul><li><code>deadNodes</code> can grow in the current <code>TempAllocatorScope</code>, so when the function
+returns - the vector will be invalid</li></ul></section><section><pre><code>if (propValue.ConvertTo(truthy))
 {
     truthy = evaluator.HasNegation ? !truthy : truthy;
     ScriptVector&lt;NodePtr&gt; deadNodes;
@@ -208,6 +218,6 @@ if (scopeParams.isEmpty())
     {
         // ...
     }
-</code></pre></section><section><ul><li>Create -&gt; Where is the release?</li></ul></section><section><h1 id=toc_57>?</h1></section><section><p>Do not forget to give feedback!</p></section></div></div><script type=application/json id=reveal-hugo-site-params>{"highlight_theme":"monokai","slide_number":true}</script><script type=application/json id=reveal-hugo-page-params>null</script><script>window.revealHugoDependencies={dependencies:[{src:'\/reveal-js/lib/js/classList.js',condition:function(){return!document.body.classList;}},{src:'\/reveal-js/plugin/markdown/marked.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/markdown/markdown.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/highlight/highlight.js',async:true,callback:function(){hljs.initHighlightingOnLoad();}},{src:'\/reveal-js/plugin/zoom-js/zoom.js',async:true},{src:'\/reveal-js\/plugin\/notes\/notes.js',async:true}]};</script><script src=/reveal-js/lib/js/head.min.js></script><script src=/reveal-js/js/reveal.js></script><script>function camelize(map){if(map){Object.keys(map).forEach(function(k){newK=k.replace(/(\_\w)/g,function(m){return m[1].toUpperCase()});if(newK!=k){map[newK]=map[k];delete map[k];}});}
+</code></pre></section><section><ul><li>Create -&gt; Where is the release?</li></ul></section><section><h1 id=toc_57>?</h1></section><section><p>Do not forget to give feedback!</p></section></div></div><script type=application/json id=reveal-hugo-site-params>{"highlight_theme":"monokai","slide_number":true,"transition":"none"}</script><script type=application/json id=reveal-hugo-page-params>null</script><script>window.revealHugoDependencies={dependencies:[{src:'\/reveal-js/lib/js/classList.js',condition:function(){return!document.body.classList;}},{src:'\/reveal-js/plugin/markdown/marked.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/markdown/markdown.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/highlight/highlight.js',async:true,callback:function(){hljs.initHighlightingOnLoad();}},{src:'\/reveal-js/plugin/zoom-js/zoom.js',async:true},{src:'\/reveal-js\/plugin\/notes\/notes.js',async:true}]};</script><script src=/reveal-js/lib/js/head.min.js></script><script src=/reveal-js/js/reveal.js></script><script>function camelize(map){if(map){Object.keys(map).forEach(function(k){newK=k.replace(/(\_\w)/g,function(m){return m[1].toUpperCase()});if(newK!=k){map[newK]=map[k];delete map[k];}});}
 return map;}
 var revealHugoDefaults={center:true,controls:true,history:true,progress:true,transition:"slide"};var revealHugoSiteParams=JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);var revealHugoPageParams=JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);var options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),revealHugoDependencies);Reveal.initialize(options);</script></body></html>
