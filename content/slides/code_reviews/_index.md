@@ -3,7 +3,7 @@ title: "How to review C++ code"
 date: 2018-09-05T17:10:27+03:00
 type: post
 outputs: ["Reveal"]
-draft: true
+draft: false
 ---
 # How to review C++ code
 
