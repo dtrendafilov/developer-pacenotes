@@ -32,6 +32,7 @@ preserveTaxonomyNames = true
 [params.reveal_hugo]
     highlight_theme = "monokai"
     slide_number = true
+    transition = "none"
 
 # Sets the menu items in the navigation ba Identifier prepends a Font Awesome icon to the menu item
 [[menu.main]]
