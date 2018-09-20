@@ -322,7 +322,7 @@ This a bit a general category, so here are the most frequent examples:
 
     v.erase(std::remove_if(v.begin(), v.end(), [](auto& e) {
         return e.IsNotUsed();
-    }, v.end());
+    });
 
 
 ---
@@ -365,7 +365,7 @@ will still be garbage.
 
 
 ---
-###### 4. Encoding
+###### 4. Indices
 
 The `std::basic_string` API is full of taking indices, so it very easy to make
 off by one error.
@@ -668,7 +668,7 @@ answering.
 
 ---
 
-- `string::data` is not null terminated
+- `string::data` is not null terminated - until C++'11
 
 ---
     virtual void InitFileReader(AAssetManager* assetManager,
