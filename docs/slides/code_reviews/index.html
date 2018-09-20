@@ -1,0 +1,225 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>How to review C&#43;&#43; code</title><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black-translucent><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=stylesheet href=/reveal-js/css/reveal.css><link rel=stylesheet href=/reveal-js/css/theme/black.css id=theme><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css><script>var link=document.createElement('link');link.rel='stylesheet';link.type='text/css';link.href=window.location.search.match(/print-pdf/gi)?'\/reveal-js/css/print/pdf.css':'\/reveal-js/css/print/paper.css';document.getElementsByTagName('head')[0].appendChild(link);</script></head><body><div class=reveal><div class=slides><section><h1 id=how-to-review-c-code>How to review C++ code</h1></section><section><p><img src=https://imgs.xkcd.com/comics/code_quality.png alt=XKCD></p></section><section><h2 id=why-do-code-reviews>Why do code reviews?</h2><p>Code reviews are a great practice. They allow for:</p><ul><li>shared knowledge</li><li>ensuring code confirms to best practices and the coding standards</li><li>less smelly code</li><li>less bugs - cost of a bug grows with the time to find it</li></ul></section><section><h2 id=what-is-the-most-expensive-bug-that-you-know-of>What is the most expensive bug that you know of?</h2><p><a href=https://www.wired.com/2005/11/historys-worst-software-bugs/>History&rsquo;s worst software bugs</a></p></section><section><pre><code>int connections = GetConnections();
+if (connections = 2) {
+}
+</code></pre><aside class=notes>Could not find the article, but this cost something like 2 mln $ for a UNIX
+distributor.</aside></section><section><h2 id=so-how-to-do-them>So how to do them?</h2><p>There are lots of advice on how to conduct code reviews, but it is too general.
+It focuses on:</p><ul><li>how to prepare for the review</li><li>how to write the review comments</li><li>enforcing coding standards</li><li>improving test coverage</li></ul></section><section><h2 id=posting-a-code-review>Posting a code review</h2><ol><li>Post a separate review for each meaningful change<ul><li>unrelated small improvements can get a in-place review</li></ul></li><li>Remove generated files from the review<ul><li>unless you have changed the code that generates them</li></ul></li></ol></section><section><h2 id=posting-a-code-review-1>Posting a code review</h2><ol><li>Explain how you have tested the changes</li><li>Add any notes that will help the reviewer<ul><li>link to design document</li><li>link to JIRA task</li></ul></li></ol></section><section><h2 id=posting-a-code-review-2>Posting a code review</h2><blockquote><p>Do review your changes before asking others to review them</p></blockquote></section><section><h2 id=writing-review-comments>Writing review comments</h2><ol><li>Not personal</li><li>Non judgemental</li></ol></section><section><h2 id=review-comments>Review Comments</h2><p>All of us (and the reviewer and the author of the code) have to keep in mind
+is:</p><blockquote><p>The code review is about the code produced by a developer at a certain moment
+in time.</p></blockquote></section><section><h3 id=the-reviewer>The reviewer</h3><ul><li>You are reviewing the code, not the person.</li></ul><blockquote><p>&ldquo;That is will not work when &hellip;&rdquo; vs &ldquo;You have missed the case when &hellip;&rdquo;</p><p>Avoid using <em>you</em> in the comments, it is easily replaceable by <em>we</em>.</p></blockquote></section><section><h3 id=the-author-of-the-code>The author of the code:</h3><ul><li>The issues found during the review are issues with the code and
+implementation. Not with your personality.</li></ul><blockquote><p>Do better the <em>next time</em>.</p></blockquote></section><section><h3 id=code-reviews-checklist>Code reviews checklist</h3></section><section><h4 id=preration>Preration</h4><ol><li>Understand what the code is supposed to do on a high-level and then drill
+down.</li><li>Give yourself enough time - start at 500 LOC / hour and adjust to your speed
+and knowledge of the area.</li></ol></section><section><h4 id=the-review>The review</h4><ol><li>Does the commit message correctly describe the intent of the changes?</li><li>Understand what the code actually does. Mark any differences between the
+intended effects and the actual ones.</li><li>Does the code confirm to the coding standards?</li><li>Do they follow DRY, KISS?</li><li>Are the changes covered by tests?</li><li>Are there any seemingly unrelated changes?</li></ol></section><section><h4 id=extra-care-topics>Extra-care topics</h4><ol><li>Timing issues</li><li>Multi-threaded code</li></ol><p>Think through all possible scenarios.</p></section><section><h4 id=coherent-labs-specific>Coherent Labs Specific</h4><ol><li>Do the changes conform to the design document?</li><li>Which is off - the design document or the changes?</li><li>Artifacts for public changes<ul><li>documentation</li><li>packaging</li><li>samples</li><li>launcher</li></ul></li><li>Are new headers added to project files? Are the project filters correct?</li></ol></section><section><h3 id=code-smells>Code smells</h3><p><a href=https://en.wikipedia.org/wiki/Code_smell>Code smell</a> is any characteristic in
+the code that possibly indicates a deeper problem.</p><ul><li>it might be not a bug, it might be a design problem</li><li>it is <em>never</em> a feature</li></ul></section><section><h4 id=general-code-smells>General code smells</h4></section><section><h5 id=1-treat-hard-to-understand-code-as-wrong>1. Treat hard to understand code as wrong.</h5><p>A given piece of code should be understandable and its correctness <em>verifiable</em>
+in a couple of minutes.</p><p>No matter whether the reviewer is an expert in the subsystem under review or
+not. Everyone should be able to understand a small piece of code in minutes,
+once having a high-level grasp of the subsystem and the project.</p></section><section><h5 id=2-lots-of-code-changed>2. Lots of code changed</h5><ul><li>it is no fun to make a review of 1000 LOC</li><li>the more code changed, the higher chance of bugs</li></ul></section><section><p>Microsoft have a study, that shows that the most often changed files during
+the development of a new Windows version, had the most bugs after the release.</p></section><section><h5 id=3-naming>3. Naming</h5><p>Beware of names without any meaning that span a lot of code.</p></section><section><pre><code>int Where(const std::vector&lt;int&gt;&amp; v, int i)
+{
+    auto it = std::find(v.begin(), v.end(), i);
+    return std::distance(v.begin(), it);
+}
+</code></pre></section><section><ul><li><code>Where</code> &hellip; what?</li><li><code>i</code> &hellip; ??? - needle?</li><li><code>v</code> &hellip; ??? - almost ok, given its type.</li><li><code>it</code> - ok, lives for two lines</li></ul></section><section><h5 id=4-lack-of-logs>4. Lack of logs</h5><ul><li>Any error state should be properly log with meaningful information</li><li>Major events in the program should be logged</li></ul></section><section><h5 id=5-magic-values>5. Magic Values</h5><p>Lack of a properly named constant usually means:</p><blockquote><p>I need something here &hellip; 13, 64, &hellip; no &hellip; 42 seems about right!</p></blockquote><p>Lets keep the magic in the air and out of the code!</p></section><section><h4 id=c-specific-code-smells>C++ specific code smells</h4><p>So what to look (<em>sniff</em>) for in a C++ code review:</p></section><section><h5 id=1-pointers-and-references>1. Pointers and references</h5><p>Pointers are not the root of all evil, but do actually tend to cause problems.</p></section><section><h6 id=pointers>Pointers?</h6><p>Whenever a plain pointer is used, be sure that:</p><ol><li>The pointer is not <code>nullptr</code>.</li><li>The pointed-to object will out live the pointer</li><li>The pointed-to object will not move/relocate somewhere else in the memory</li></ol><aside class=notes>This topic covers two of the most *C++*-ish kind of issues - ownership and
+lifetime.</aside></section><section><h6 id=pointers-1>Pointers?</h6><ol><li>No naked <code>new</code> and <code>delete</code> - these are almost always not necessary. Require
+extra care for the proper management of the objects allocated this way.</li></ol></section><section><blockquote><p>I am smart and use smart pointers, so I am safe :)</p></blockquote></section><section><p>Smart pointers can be <code>nullptr</code> as well.</p></section><section><h5 id=2-container-choice>2. Container choice</h5><p>Use a <code>vector</code>.</p><ul><li>double think and explain why using <code>deque</code></li><li>double think and explain why using <code>*Deprecated</code> maps</li></ul></section><section><h6 id=unless-you-have-a-compelling-reasons-like>Unless you have a compelling reasons like:</h6><ul><li>it will hold a large number of elements, will change a lot, and the most
+common operation is going to be find an element with some property having
+a specific value</li><li>elements must not be relocated</li></ul></section><section><h5 id=2-container-choice-1>2. Container choice</h5><p>The container invalidation is something that can be easily overlooked when
+writing the code and what is worse - it will appear to work correctly in most
+cases.</p><span class=fragment>Until the container relocates is storage ...</span></section><section><h5 id=so-for-each-container-check>So, for each container check:</h5><ol><li>Is that the right type of container for the usage?</li><li>Is the container modified while being iterated?</li><li>Is there an iterator or a pointer inside the container that will out-live
+possible relocating operation for that container?</li></ol></section><section><h5 id=3-casts>3. Casts</h5><p>Prefer <code>static_cast</code> and constructor casts whenever possible, since the compiler
+will not let you shoot yourself in the foot for most cases.</p><p>The exception here is cast from <code>void*</code> to something else - make sure that the
+type is correct.</p></section><section><h5 id=3-casts-1>3. Casts</h5><p><em>C-style</em> and <code>reinterpet-cast</code> are more dangerous, the compiler is much more
+permissive with them.</p></section><section><h5 id=3-casts-2>3. Casts</h5><ol><li>The cast used is the safeest one possible.</li><li>The types are correct.</li><li>The level of indirection is not casted away, i.e. casting from <code>T**</code> to <code>Y*</code>.</li><li><code>const_cast</code> is usually a <em>design</em> smell, consider whether that is really the
+way to go</li></ol></section><section><h5 id=4-assumptions-that-are-not-asserted-or-checked>4. Assumptions that are not asserted or checked</h5><p>This a bit a general category, so here are the most frequent examples:</p><ol><li>Accessing array element that is not there. Out-of-bounds access or using
+<code>.front()</code>, <code>.back()</code> on an empty container.</li><li>Iterator returned by <code>find</code> is not the <em>end</em> iterator.</li><li>Index returned by <code>string::find</code> is not <code>npos</code>.</li></ol></section><section><pre><code>v.erase(std::remove_if(v.begin(), v.end(), [](auto&amp; e) {
+    return e.IsNotUsed();
+});
+</code></pre></section><section><h5 id=5-operations-with-strings>5. Operations with strings</h5><p>There are three major sources of issues when working with strings:</p><ol><li>Null termination.</li><li><code>char</code> and <code>wchar_t</code></li><li>Encoding</li><li>Indices for substrings</li></ol></section><section><h6 id=1-null-termination>1. Null termination.</h6><ul><li>All the APIs working with strings have special cases whether and when the
+terminating null is written to buffer and whether it is counted in the
+returned length of the string.</li></ul></section><section><h6 id=1-null-termination-1>1. Null termination.</h6><ul><li>Some of the APIs return a null terminated buffer, some don&rsquo;t. It is very
+easy to use a non-terminated buffer and cause a bug.</li></ul><p>Double check the documentation and the usage!</p></section><section><h6 id=2-char-and-wchar-t>2. <code>char</code> and <code>wchar_t</code></h6><p><code>char*</code> (UTF-8) and <code>wchar_t*</code> (UTF-16 or UTF32, depending on the platform)
+do not mix well. Using anything but unicode conversion library will most
+likely result in bugs when non-ascii symbols are present.</p></section><section><h6 id=3-encoding>3. Encoding</h6><p>Check that the code assumes the correct encoding of the string, otherwise it
+will still be garbage.</p></section><section><h6 id=4-indices>4. Indices</h6><p>The <code>std::basic_string</code> API is full of taking indices, so it very easy to make
+off by one error.</p></section><section><h5 id=6-smart-pointers>6. Smart pointers</h5><p>Smart pointers are there to resolve the problems of the plain ones, but still
+they have their own set of caveats.</p></section><section><h5 id=6-smart-pointers-1>6. Smart pointers</h5><p>Most shared pointers use reference counting, so the following must be checked:</p><ol><li><p>Cyclic references</p></li><li><p><a href=https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/Concepts/Ownership.html><em>The Create Rule</em></a> - some objects are created with one
+reference in them, so they must be released explicitly when they are no
+longer used. When such objects are stored in a smart pointer, this reference
+must be <em>adopted</em>, otherwise it will leak.</p></li><li><p>Two shared pointers to the same object. That is not an issue with <em>intrusive
+pointer</em></p></li></ol></section><section><h5 id=7-auto-and-auto>7. <code>auto</code> and <code>auto&amp;</code></h5><p><code>auto</code> is great, but it makes it very easy to create a copy of an object. Check
+that:</p><ol><li><code>auto&amp;</code> is used wherever possible.</li><li><p><code>auto&amp;</code> is not used for something that gets destroyed, i.e.</p><pre><code>auto&amp; top = stack.top();
+stack.pop();
+</code></pre></li></ol></section><section><h5 id=8-objects-with-padding>8. Objects with padding</h5><p>It is very tempting to use functions like <code>memcmp</code> and <code>HashMemory</code> to create
+comparators and hash functions for objects that are used in a hash map.</p><p>However they will use the uninitialized memory that is present in any padding
+inside the object.</p></section><section><h5 id=8-objects-with-padding-1>8. Objects with padding</h5><ol><li>Check that there is no padding inside objects used with <code>memcmp</code> and
+<code>HashMemory</code>.</li><li>Check that there are <code>static_assert</code>s that will enforce that. Keep in mind
+that some compilers will move the padding around when there is inheritance in
+the mix.</li></ol><p>Consider adding the padding explictly in the object to make it visible:</p><pre><code>char __padding[N] = { 0 };
+</code></pre></section><section><h5 id=9-float-precision-and-nan>9. Float precision and NAN</h5><ul><li>Don&rsquo;t use NAN.</li></ul><p>When compiled with <em>fast-math</em> it leads to undefined behaviour.</p></section><section><h5 id=10-error-checking-for-os-and-external-apis>10. Error checking for OS and external APIs</h5><p>Any OS or external API call can fail, so there must be a check for failures and
+appropriate logging.</p></section><section><h5 id=11-hiding-or-reusing-a-variable>11. Hiding or reusing a variable</h5><p>Hiding a</p><ul><li>function parameter</li><li>member variable</li><li>variable from a outer scope</li></ul><p>is really confusing and makes the code harder to read and often wrong.</p></section><section><h5 id=12-using-namespace-in-headers>12. <code>using namespace</code> in headers</h5></section><section><h4 id=coherent-labs-specific-code-smells>Coherent Labs specific code smells</h4></section><section><h5 id=1-temp-allocator>1. Temp allocator</h5><p>We are using a temp allocator that has significant performance gains. However,
+we must be sure that each temp allocation is guarded by a <code>TempAllocatorScope</code>
+and does not out-live that.</p></section><section><h5 id=1-temp-allocator-1>1. Temp allocator</h5><p>Also look for cases, where the normal allocator is used, while the <em>temp
+allocator</em> will suffice.</p></section><section><h5 id=2-entry-points-for-public-apis>2. Entry-points for public APIs</h5><p>The memory allocators rely on specific thread local variables to be set. So each
+entry point of our products must be guarded with entry point like
+<code>COHERENT_UIGT_ENTRY_POINT</code>.</p></section><section><h5 id=3-types-used-as-task-parameters>3. Types used as task parameters</h5><p>We do have a great system to prevent you from shooting yourself easility.</p><blockquote><p>Make sure that any added types are using the correct semantics.</p></blockquote></section><section><h5 id=4-timing-issues-in-tests>4. Timing issues in tests</h5><p>Tests tend to depend on time for loading resources and similar. Every <em>sleep</em>
+and <em>wait</em> in tests should be treated as extremely smelly. Most cases can be
+rewritten to use events or polling in worst case to check that something has
+finished loading.</p></section><section><h2 id=quiz-time>Quiz time!</h2></section><section><p>If you happen to recollect that bug, give time the others to think before
+answering.</p></section><section><pre><code>ViewBinder::~ViewBinder() {
+    ScriptingScope scope(m_View-&gt;GetScripting());
+}
+</code></pre></section><section><ol><li><code>m_View</code> is a pointer -&gt; lifetime? (The <code>ViewBinder</code> is being destroyed &hellip; )</li><li>The <code>ViewBinder</code> lives in the <code>View</code> and has a pointer to it :/</li></ol></section><section><pre><code>void DataBinder::RunEvaluatorsForProperty()
+{
+    auto kt = modelData.PropertyEvaluators.find(propWithIndex);
+    if (kt != modelData.PropertyEvaluators.end())
+    {
+        auto&amp; evaluators = *kt-&gt;second.ArrayPtr;
+        for (size_t i = 0; i &lt; evaluators.size(); ++i)
+        {
+            const auto&amp; evaluator = evaluators[i];
+            auto node = evaluator-&gt;DOMNode.lock();
+            if (!node || !node-&gt;IsElement())
+            {
+                continue;
+            }
+            UpdatePropertyInDOM(AsElementSafe(node.get()));
+        }
+    }
+}
+</code></pre></section><section><ul><li>container relocation</li><li><code>kt</code> - ???</li><li>double work - checking for <code>AsElementSafe</code></li></ul></section><section><pre><code>Ref&lt;WebKitCSSMatrix&gt; WebKitCSSMatrix::skewX(double angle) const
+{
+    if (std::isnan(angle))
+        angle = 0;
+
+    auto matrix = create(m_matrix);
+    matrix-&gt;m_matrix.skewX(angle);
+    return matrix;
+}
+</code></pre></section><section><ul><li>NAN</li></ul></section><section><pre><code>std::size_t csl::hash&lt;ShadowShape&gt;::operator()(const ShadowShape&amp; s) const
+{
+    return farmhash::Hash(reinterpret_cast&lt;const char*&gt;(&amp;s),
+                          sizeof(ShadowShape));
+}
+</code></pre></section><section><ul><li>hash of unitialized memory</li></ul></section><section><pre><code>using BindingEvaluatorArray = DomDeque&lt;DomSharedPtr&lt;BindingEvaluator&gt;&gt;;
+</code></pre></section><section><ul><li>Why a deque?</li></ul></section><section><pre><code>case CommandType::FillText:
+{
+    TmpVector&lt;TextRunProps&gt; runs;
+    TmpVector&lt;TypefacePtr&gt; typefaces;
+    runs.reserve(batch.Commands.size());
+    // ...
+}
+</code></pre></section><section><ul><li><code>TempAllocatorScope</code></li></ul></section><section><pre><code>WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                    JSStringRef jsStr)
+{
+    const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
+    LChar* strData = nullptr;
+    auto str = WTF::String::createUninitialized(utf8Max, strData);
+    JSStringGetUTF8CString(jsStr, (char*)strData, utf8Max);
+
+    return str;
+}
+</code></pre></section><section><ul><li>null termination?</li><li>cast</li></ul></section><section><pre><code>void UISystemImpl::RegisterGamepad(unsigned id, const char* info,
+                                   unsigned axesCount,
+                                   unsigned buttonsCount)
+{
+    m_GamepadProvider-&gt;RegisterGamepad(id, info, axesCount,
+                                       buttonsCount);
+}
+</code></pre></section><section><ul><li>Entry points, needs <code>COHERENT_UIGT_ENTRY_POINT</code>.</li></ul></section><section><pre><code>WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                    JSStringRef jsStr)
+{
+    const size_t utf8Max = JSStringGetMaximumUTF8CStringSize(jsStr);
+    LChar* strData = nullptr;
+    auto str = WTF::String::createUninitialized(utf8Max, strData);
+
+    auto length = JSStringGetUTF8CString(jsStr, (char*)strData,
+                                         utf8Max);
+    str.remove(length - 1, (int)0x7ffffff);
+
+    return str;
+}
+</code></pre></section><section><ul><li><code>0x7ffffff</code> &hellip; what???</li></ul></section><section><pre><code>JSRetainPtr&lt;JSStringRef&gt; eventName(JSValueToStringCopy(context,
+                                   arguments[0],
+                                   exception));
+
+Coherent::String name;
+auto chars = JSStringGetCharactersPtr(eventName.get());
+name.assign(chars, chars + JSStringGetLength(eventName.get()));
+</code></pre></section><section><ul><li>broke the encoding</li><li>The create rule, leaked a ref to the string - use <code>AdoptPtr</code></li></ul></section><section><pre><code>CohString returnString(&quot;return &quot;);
+returnString += evaluationString;
+JSValueRef exception = nullptr;
+JSObjectRef jsFunc = nullptr;
+if (scopeParams.isEmpty())
+{
+    jsFunc = JSObjectMakeFunction(jsContext, nullptr, 0, nullptr,
+        MakeJSStringPtr(returnString.data()).get(),
+        nullptr, 0, &amp;exception);
+}
+</code></pre></section><section><ul><li><code>string::data</code> is not null terminated - until C++&lsquo;11</li></ul></section><section><pre><code>virtual void InitFileReader(AAssetManager* assetManager,
+                            const char* fn) override
+{
+    AAsset* m_Asset = AAssetManager_open(assetManager,
+                                         NormalizePath(fn).c_str(),
+                                         AASSET_MODE_BUFFER);
+    if (m_Asset)
+    {
+        AAsset_seek(m_Asset, 0, SEEK_SET);
+        m_FileSize = AAsset_getRemainingLength(m_Asset);
+    }
+}
+</code></pre></section><section><ul><li><code>m_Asset</code> is local and hides the member variable</li></ul></section><section><pre><code>virtual unsigned Read(unsigned start,
+                      unsigned char* buffer,
+                      unsigned end) override
+{
+    end = std::min(end, unsigned(m_FileSize));
+
+    assert(start &gt;= 0);
+    assert((end &gt;= 0));
+    assert((end &gt;= start));
+    // ...
+}
+</code></pre></section><section><ul><li><code>end</code> changes meaning from requested end to possible end</li><li>first two asserts don&rsquo;t test anything, <code>unsigned</code> &gt;= 0</li></ul></section><section><pre><code>void DataBindExpression::EvaluateIf(bool value, Element* parent,
+                                    TmpVector&lt;NodePtr&gt;&amp; deadNodes)
+{
+    TempAllocatorScope scope;
+    if (!value)
+    {
+        deadNodes.push_back(parent-&gt;RemoveChild(children[index]));
+    }
+}
+</code></pre></section><section><ul><li><code>deadNodes</code> can grow in the current <code>TempAllocatorScope</code>, so when the function
+returns - the vector will be invalid</li></ul></section><section><pre><code>if (propValue.ConvertTo(truthy))
+{
+    truthy = evaluator.HasNegation ? !truthy : truthy;
+    ScriptVector&lt;NodePtr&gt; deadNodes;
+    // Data bind if has only 1 set of evaluators.
+    evaluator.Children.resize(1);
+    expression-&gt;EvaluateIf(truthy, element, deadNodes,
+                           evaluator.Children[0].Evaluators);
+    EvaluateGroup(evaluator.Children[0], evaluator,
+                  propValue, binder);
+
+    ReleaseDeadNodes(deadNodes, binder);
+}
+</code></pre></section><section><ul><li>could use a <code>TmpVector</code></li></ul></section><section><pre><code>WTF::String JSStringToUTF8WTFString(JSContextRef jsContext,
+                                    JSValueRef jsValue)
+{
+    JSStringRef jsStr = JSValueToStringCopy(jsContext,
+                                            jsValue, nullptr);
+    return JSStringToUTF8WTFString(jsContext, jsStr);
+}
+</code></pre></section><section><ul><li>The <em>create</em> rule - leak of a reference</li><li>no error handling</li></ul></section><section><pre><code>bool ScriptValue::GetLength(ScriptingEngine engine, int&amp; len)
+{
+    auto context = ToJSCContext(engine);
+    auto js = ToJSC(m_Handle);
+    auto propName = JSStringCreateWithUTF8CString(&quot;length&quot;);
+    auto obj = JSValueToObject(context, js, nullptr);
+    if (obj &amp;&amp; JSObjectHasProperty(context, obj, propName))
+    {
+        // ...
+    }
+</code></pre></section><section><ul><li>Create -&gt; Where is the release?</li></ul></section><section><pre><code>engine.trigger('Start');
+</code></pre></section><section><ul><li>Is there anyone listening?</li></ul></section><section><h2 id=takeaway>Takeaway</h2><ol><li>Prepare yourself to understand the code</li><li>If you are not convinced something is correct in a minute, poke it until you
+prove that it is correct or that it is broken.</li><li>Keep your eyes peeled for the smells.</li></ol></section><section><h1 id=toc_58>?</h1></section><section><p>Do not forget to give feedback!</p></section></div></div><script type=application/json id=reveal-hugo-site-params>{"highlight_theme":"monokai","slide_number":true,"transition":"none"}</script><script type=application/json id=reveal-hugo-page-params>null</script><script>window.revealHugoDependencies={dependencies:[{src:'\/reveal-js/lib/js/classList.js',condition:function(){return!document.body.classList;}},{src:'\/reveal-js/plugin/markdown/marked.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/markdown/markdown.js',condition:function(){return!!document.querySelector('[data-markdown]');}},{src:'\/reveal-js/plugin/highlight/highlight.js',async:true,callback:function(){hljs.initHighlightingOnLoad();}},{src:'\/reveal-js/plugin/zoom-js/zoom.js',async:true},{src:'\/reveal-js\/plugin\/notes\/notes.js',async:true}]};</script><script src=/reveal-js/lib/js/head.min.js></script><script src=/reveal-js/js/reveal.js></script><script>function camelize(map){if(map){Object.keys(map).forEach(function(k){newK=k.replace(/(\_\w)/g,function(m){return m[1].toUpperCase()});if(newK!=k){map[newK]=map[k];delete map[k];}});}
+return map;}
+var revealHugoDefaults={center:true,controls:true,history:true,progress:true,transition:"slide"};var revealHugoSiteParams=JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);var revealHugoPageParams=JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);var options=Object.assign({},camelize(revealHugoDefaults),camelize(revealHugoSiteParams),camelize(revealHugoPageParams),revealHugoDependencies);Reveal.initialize(options);</script></body></html>
