@@ -1,7 +1,7 @@
 ---
 title: "How to review C++ code"
 date: 2018-09-05T17:10:27+03:00
-type: post
+type: slides
 outputs: ["Reveal"]
 draft: false
 ---
