@@ -133,8 +133,6 @@ is:
 
 Think through all possible scenarios.
 
-TODO: Extend?
-
 
 ---
 #### Coherent Labs Specific
@@ -178,7 +176,7 @@ once having a high-level grasp of the subsystem and the project.
 ---
 
 Microsoft have a study, that shows that the most often changed files during
-development of a new Windows, had the most bugs after the release.
+the development of a new Windows version, had the most bugs after the release.
 
 ---
 ##### 3. Naming
@@ -189,7 +187,7 @@ Beware of names without any meaning that span a lot of code.
     int Where(const std::vector<int>& v, int i)
     {
         auto it = std::find(v.begin(), v.end(), i);
-        return std::distance(v.begin(), i);
+        return std::distance(v.begin(), it);
     }
 
 ---
@@ -197,7 +195,7 @@ Beware of names without any meaning that span a lot of code.
 - `Where` ... what?
 - `i` ... ??? - needle?
 - `v` ... ??? - almost ok, given its type.
-- `it` - ok, lives for
+- `it` - ok, lives for two lines
 
 ---
 ##### 4. Lack of logs
@@ -706,7 +704,7 @@ answering.
 
 ---
 
-- `end` changes meaning from requested end to possible end - better naming perhaps
+- `end` changes meaning from requested end to possible end
 - first two asserts don't test anything, `unsigned` >= 0
 
 ---
@@ -777,6 +775,22 @@ answering.
 ---
 
 - Create -> Where is the release?
+
+---
+
+    engine.trigger('Start');
+
+---
+
+- Is there anyone listening?
+
+---
+## Takeaway
+
+1. Prepare yourself to understand the code
+2. If you are not convinced something is correct in a minute, poke it until you
+   prove that it is correct or that it is broken.
+3. Keep your eyes peeled for the smells.
 
 ---
 # ?
