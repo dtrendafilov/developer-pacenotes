@@ -33,14 +33,14 @@ permissive with them.</p></section><section><h5 id=3-casts-2>3. Casts</h5><ol><l
 way to go</li></ol></section><section><h5 id=4-assumptions-that-are-not-asserted-or-checked>4. Assumptions that are not asserted or checked</h5><p>This a bit a general category, so here are the most frequent examples:</p><ol><li>Accessing array element that is not there. Out-of-bounds access or using
 <code>.front()</code>, <code>.back()</code> on an empty container.</li><li>Iterator returned by <code>find</code> is not the <em>end</em> iterator.</li><li>Index returned by <code>string::find</code> is not <code>npos</code>.</li></ol></section><section><pre><code>v.erase(std::remove_if(v.begin(), v.end(), [](auto&amp; e) {
     return e.IsNotUsed();
-}, v.end());
+});
 </code></pre></section><section><h5 id=5-operations-with-strings>5. Operations with strings</h5><p>There are three major sources of issues when working with strings:</p><ol><li>Null termination.</li><li><code>char</code> and <code>wchar_t</code></li><li>Encoding</li><li>Indices for substrings</li></ol></section><section><h6 id=1-null-termination>1. Null termination.</h6><ul><li>All the APIs working with strings have special cases whether and when the
 terminating null is written to buffer and whether it is counted in the
 returned length of the string.</li></ul></section><section><h6 id=1-null-termination-1>1. Null termination.</h6><ul><li>Some of the APIs return a null terminated buffer, some don&rsquo;t. It is very
 easy to use a non-terminated buffer and cause a bug.</li></ul><p>Double check the documentation and the usage!</p></section><section><h6 id=2-char-and-wchar-t>2. <code>char</code> and <code>wchar_t</code></h6><p><code>char*</code> (UTF-8) and <code>wchar_t*</code> (UTF-16 or UTF32, depending on the platform)
 do not mix well. Using anything but unicode conversion library will most
 likely result in bugs when non-ascii symbols are present.</p></section><section><h6 id=3-encoding>3. Encoding</h6><p>Check that the code assumes the correct encoding of the string, otherwise it
-will still be garbage.</p></section><section><h6 id=4-encoding>4. Encoding</h6><p>The <code>std::basic_string</code> API is full of taking indices, so it very easy to make
+will still be garbage.</p></section><section><h6 id=4-indices>4. Indices</h6><p>The <code>std::basic_string</code> API is full of taking indices, so it very easy to make
 off by one error.</p></section><section><h5 id=6-smart-pointers>6. Smart pointers</h5><p>Smart pointers are there to resolve the problems of the plain ones, but still
 they have their own set of caveats.</p></section><section><h5 id=6-smart-pointers-1>6. Smart pointers</h5><p>Most shared pointers use reference counting, so the following must be checked:</p><ol><li><p>Cyclic references</p></li><li><p><a href=https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/Concepts/Ownership.html><em>The Create Rule</em></a> - some objects are created with one
 reference in them, so they must be released explicitly when they are no
@@ -155,7 +155,7 @@ if (scopeParams.isEmpty())
         MakeJSStringPtr(returnString.data()).get(),
         nullptr, 0, &amp;exception);
 }
-</code></pre></section><section><ul><li><code>string::data</code> is not null terminated</li></ul></section><section><pre><code>virtual void InitFileReader(AAssetManager* assetManager,
+</code></pre></section><section><ul><li><code>string::data</code> is not null terminated - until C++&lsquo;11</li></ul></section><section><pre><code>virtual void InitFileReader(AAssetManager* assetManager,
                             const char* fn) override
 {
     AAsset* m_Asset = AAssetManager_open(assetManager,
