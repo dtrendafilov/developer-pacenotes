@@ -137,7 +137,8 @@ Think through all possible scenarios.
 ---
 #### Coherent Labs Specific
 
-1. Do the changes conform to the initial design document?
+1. Do the changes conform to the design document?
+2. Which is off - the design document or the changes?
 3. Artifacts for public changes
     - documentation
     - packaging
@@ -255,7 +256,7 @@ Smart pointers can be `nullptr` as well.
 
 Use a `vector`.
 
-- double think and explain why using `queue`
+- double think and explain why using `deque`
 - double think and explain why using `*Deprecated` maps
 
 ---
@@ -535,6 +536,7 @@ answering.
 ---
 
 - container relocation
+- `kt` - ???
 - double work - checking for `AsElementSafe`
 
 ---
