@@ -1,0 +1,456 @@
+<!doctype html><html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Как да извлечем максималното от времето си?</title>
+    
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reveal.css">
+    <link rel="stylesheet" href="/reveal-js/css/theme/black.css" id="theme"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+    
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '\/reveal-js/css/print/pdf.css' : '\/reveal-js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    
+  </head>
+  <body>
+  <div class="reveal">
+  
+  <div class="slides">
+    
+    <section>
+
+<h1 id="как-да-използваме-пълноценно-времето-си">Как да използваме пълноценно времето си?</h1>
+
+</section><section>
+
+<h6 id="кой-съм-аз">Кой съм аз?</h6>
+
+<p>Димитър Трендафилов</p>
+
+<ul>
+<li>Компютърни Науки 2009 - вторият випуск в историята</li>
+
+<li><p>Помагам да се случат курсовете:</p>
+
+<ul>
+<li>C++ за напреднали</li>
+<li>Имплементация на езици за програмиране</li>
+<li>Високопроизводително програмиране</li>
+<li>Дизайн и архитектура на игрови двигатели</li>
+</ul></li>
+
+<li><p>съосновател и технически директор в Кохерент Лабс, където правим UI middleware
+за игри</p></li>
+</ul>
+
+</section><section>
+
+<p>Обрградете се с хора, които ви мислят доброто.</p>
+
+</section><section>
+
+<h3 id="disclaimer">Disclaimer</h3>
+
+<ul>
+<li>Всичко, което ще кажа, вероятно е грешно</li>
+<li>Части от него може да са полезни</li>
+</ul>
+
+</section><section>
+
+<h3 id="времето">Времето</h3>
+
+<p>Най-ценният ни ресурс</p>
+
+<ul>
+<li>просто си изтича</li>
+<li>не се връща, или акумулира</li>
+<li>няма го по магазините</li>
+</ul>
+
+</section><section>
+
+<h3 id="употреба-на-времето">Употреба на времето</h3>
+
+<p>Ние сме в лодка в океана</p>
+
+<ul>
+<li>накъде да гребем?</li>
+<li>как да гребем?</li>
+</ul>
+
+</section><section>
+
+<h3 id="нашето-предназначение">Нашето предназначение</h3>
+
+<ul>
+<li>Трябва да го намерим</li>
+<li>Може да са повече от едно, но повече от 3 - няма да има фокус</li>
+<li>Може да се промени с времето</li>
+</ul>
+
+</section><section>
+
+<h4 id="а-защо-не-цел">А защо не &ldquo;цел&rdquo;?</h4>
+
+<p>Предназначение:</p>
+
+<blockquote>
+<p>Цел и смисъл на съществуването на някого или на нещо.</p>
+</blockquote>
+
+</section><section>
+
+<h3 id="как-да-намерим-предназначението-си">Как да намерим предназначението си?</h3>
+
+<ul>
+<li>Изберете 5 основни ценности</li>
+<li>Направете ги лични, като поясните защо са важни за вас</li>
+<li>Подредете ги по-важност</li>
+<li>Формулирайте ги в изявление, до 2-3 изречение</li>
+</ul>
+
+</section><section>
+
+<h3 id="мойте-ценности">Мойте ценности</h3>
+
+<ul>
+<li>ефективност</li>
+<li>екипност</li>
+<li>развитие</li>
+<li>превъзходство</li>
+<li>забавление</li>
+</ul>
+
+</section><section>
+
+<h3 id="моето-предназначение">Моето предназначение</h3>
+
+<blockquote>
+<p>Да създам екип, който решава сложни проблеми все по-добре, докато се забавлява
+и всеки изживява живота си пълноценно.</p>
+</blockquote>
+
+</section><section>
+
+<p>Трябва да виждаме как това, което правим е по предназначение</p>
+
+</section><section>
+
+<p>В океана това не е лесно, но все пак трябва да гребем в правилната посока.</p>
+
+</section><section>
+
+<p>Ако няма директна възможност да гребем <em>по предназначение</em>?</p>
+
+</section><section>
+
+<ul>
+<li>Искам да съм &hellip;</li>
+<li>Това, което мога да правя сега <em>по предназначение</em> е &hellip;</li>
+</ul>
+
+</section><section>
+
+<h1 id="extra-credit-във-фми">Extra Credit във ФМИ</h1>
+
+<ul>
+<li>запознаваме се с хора, които може да ни повлият</li>
+<li>работа в екип</li>
+<li>управление на проекти</li>
+<li>активно слушане</li>
+<li>водене на записки</li>
+<li>писане на код, работа с VCS</li>
+</ul>
+
+</section><section>
+
+<h3 id="време-и-място">Време и място</h3>
+
+<p>Отделете време и място за работата по предназначение.</p>
+
+<ul>
+<li>със сигурност ще имате време да работите по предназначение</li>
+<li>ще се разсейвате по-малко</li>
+</ul>
+
+<aside class="notes"><ul>
+<li>как да няма срещи следобед?</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="как-да-гребем">Как да гребем?</h2>
+
+</section><section>
+
+<h3 id="многозадачност">Многозадачност</h3>
+
+<ul>
+<li>Многозадачност vs превключване между задачи</li>
+<li>Мит</li>
+</ul>
+
+</section><section>
+
+<h3 id="експеримент">Експеримент</h3>
+
+<ul>
+<li>Вземете лист хартия</li>
+<li>Пуснете хронометър</li>
+<li>Напишете &ldquo;Превключването между задачи е убиец&rdquo; на един ред</li>
+<li>Напишете числата от 1 до 35 (броя букви на първия ред) в един ред</li>
+<li>Спрете хронометъра</li>
+</ul>
+
+</section><section>
+
+<h4 id="експеримент-2">Експеримент 2</h4>
+
+<p>Същото, но напишете изречението като редувате по една буква от текста на първия
+ред и по едно от числата на втория ред.</p>
+
+</section><section>
+
+<h4 id="кое-ще-е-по-бързо">Кое ще е по-бързо?</h4>
+
+</section><section>
+
+<h3 id="многозадачност-1">Многозадачност</h3>
+
+<p>Правя повече от едно нещо, използвайки различни части от тялото и мозъка си.</p>
+
+<ul>
+<li>слушам нещо и чистя / подреждам</li>
+</ul>
+
+</section><section>
+
+<h3 id="прекъсвания">Прекъсвания</h3>
+
+<ul>
+<li>Колко човека не превключват между задачи?</li>
+<li>Колко си проверяват телефона / instant messanger на 15 минути? Или имат
+пуснати нотификации за всичко?</li>
+</ul>
+
+</section><section>
+
+<h4 id="pomodoro-technique">Pomodoro technique</h4>
+
+<ul>
+<li>работим в сесии от по 30-45 минути без прекъсвание</li>
+<li>почиваме 15 минути</li>
+</ul>
+
+</section><section>
+
+<h3 id="производителност">Производителност</h3>
+
+<ul>
+<li>производителността ни се променя през деня</li>
+<li>разберете кога са вашите най-продуктивни часове</li>
+<li>планирайте по-сложните задачи за тогава</li>
+</ul>
+
+</section><section>
+
+<h3 id="сън">Сън</h3>
+
+<p>Изкушаващо е да се опитваме да имаме повече време като намалим времето за сън.</p>
+
+</section><section>
+
+<h3 id="сън-и-производителност">Сън и производителност</h3>
+
+<p>Липсата на сън води до нарушеване на кратковременната памет.</p>
+
+<p>По-трудно:</p>
+
+<ul>
+<li>запомняме / учим неща</li>
+<li>взимаме решения (не можем да си поберем всички аспекти в съзнанието)</li>
+</ul>
+
+</section><section>
+
+<h3 id="качествен-сън">Качествен сън</h3>
+
+<ul>
+<li>спазвайте стабилен режим</li>
+<li>без кофеин 8 часа преди сън</li>
+<li>без храна и алкохол 3 часа преди сън</li>
+<li>без екрани (синя светлина)</li>
+<li>пълна тъмнина</li>
+</ul>
+
+</section><section>
+
+<h2 id="решения-за-тривиални-неща">Решения за тривиални неща</h2>
+
+<ul>
+<li>Имаме ограничено количество енергия за взимане на решения</li>
+<li>Всеки избор отнема време и енергия</li>
+</ul>
+
+</section><section>
+
+<p>Obama:</p>
+
+<blockquote>
+<p>You&rsquo;ll see I wear only gray or blue suits. I&rsquo;m trying to pare down decisions.
+I don&rsquo;t want to make decisions about I&rsquo;m eating  or wearing. Because I have
+too many other decisions to make.</p>
+</blockquote>
+
+</section><section>
+
+<ul>
+<li>дрехи -&gt; FIFO, LIFO</li>
+<li>храна -&gt; направете си меню и random.org</li>
+</ul>
+
+</section><section>
+
+<h3 id="упражнения">Упражнения</h3>
+
+<p>Повторението е майка на знанието &hellip; и баща на затъпяването.</p>
+
+</section><section>
+
+<p>Просто повтарайки едно и също нещо, не научаваме нищо ново и не се развиваме.</p>
+
+</section><section>
+
+<h3 id="преднамерени-тренировки">Преднамерени тренировки</h3>
+
+<p>Правим упражнение с преднамерената цел да подобрим специфично умение.</p>
+
+</section><section>
+
+<h3 id="няма-време">Няма време</h3>
+
+<p>Как да включим преднамерените &ldquo;тренировки&rdquo; в ежедневието си?</p>
+
+</section><section>
+
+<ul>
+<li>Избираме умение, което искаме да подобрим</li>
+<li>Поставяме си цел за поредната ежедневна задача</li>
+<li>Проверяваме с целта</li>
+</ul>
+
+</section><section>
+
+<h3 id="слушане">Слушане</h3>
+
+<ul>
+<li>Нашето предназначение е да завършим, без да загубим разсъдъка и приятелите си
+през сесията.</li>
+<li>Искаме да си вземем изпитите без два месеца да не излизаме от стаята</li>
+<li>Да научим повече, докато така и така слушаме лекцията</li>
+<li>Четейки записките си, колко ? имам на другия ден след лекцията?</li>
+</ul>
+
+</section><section>
+
+<h3 id="mindfulness">Mindfulness</h3>
+
+<p>Размисъл / Самоосъзнатост за това какво мислим, чувстваме и правим.</p>
+
+<ul>
+<li>контрол върху действията ни</li>
+<li>разбираме защо нещо ни е трудно</li>
+<li>по-лесно ще постигнем целите на упражненията</li>
+</ul>
+
+<aside class="notes"><ul>
+<li>кои са най-продуктивните ми часове?</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h4 id="медитация">Медитация</h4>
+
+<p>Най-&ldquo;лесния&rdquo; начин за постигане на mindfulness.</p>
+
+</section><section>
+
+<h2 id="takeaway">Takeaway</h2>
+
+<ol>
+<li>Хората около вас.</li>
+<li>Преднзначение</li>
+<li>Фокус</li>
+<li>Самоосъзнаване</li>
+</ol>
+
+</section><section>
+
+<h1 id="toc_32">?</h1>
+
+</section><section>
+
+<h3 id="обратна-връзка">Обратна връзка</h3>
+
+<p><img src="feedback.svg" alt="Feedback QR code" /></p>
+
+<p><a href="https://goo.gl/forms/CcYGwRFH9PeMXeGy2">https://goo.gl/forms/CcYGwRFH9PeMXeGy2</a></p>
+
+</section><section>
+</section>
+  </div>
+</div>
+<script type="application/json" id="reveal-hugo-site-params">{"highlight_theme":"monokai","slide_number":true,"transition":"none"}</script>
+    <script type="application/json" id="reveal-hugo-page-params">null</script>
+    <script type="text/javascript"> window.revealHugoDependencies = { dependencies: [ { src: '\/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '\/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '\/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '\/reveal-js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '\/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          
+          { src: '\/reveal-js\/plugin\/notes\/notes.js', async: true }
+      ]};
+    </script>
+    <script src="/reveal-js/lib/js/head.min.js"></script>
+    <script src="/reveal-js/js/reveal.js"></script>
+    <script type="text/javascript">
+      
+      
+      function camelize(map) {
+        if (map) {
+          Object.keys(map).forEach(function(k) {
+            newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+            if (newK != k) {
+              map[newK] = map[k];
+              delete map[k];
+            }
+          });
+        }
+        return map;
+      }
+      
+      var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+      var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+      var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+      
+      var options = Object.assign({},
+        camelize(revealHugoDefaults),
+        camelize(revealHugoSiteParams),
+        camelize(revealHugoPageParams),
+        revealHugoDependencies);
+      Reveal.initialize(options);
+    </script>
+    
+    
+  </body>
+</html>
