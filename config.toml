@@ -21,6 +21,7 @@ preserveTaxonomyNames = true
 	socialAppearAtTop = false
 	googleAnalytics = "UA-109980000-1"
 	loadFavicon = true
+	viewMorePostLink     = "/posts/"
 
 [params.intro]
 	# header = "Developer Pacenotes"
