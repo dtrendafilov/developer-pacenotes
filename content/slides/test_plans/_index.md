@@ -4,7 +4,6 @@ date: 2021-01-21T17:10:27+03:00
 type: slides
 outputs: ["Reveal"]
 draft: true
----
 
 ---
 # Test Plans
@@ -12,8 +11,8 @@ draft: true
 ---
 ### Disclaimer
 
-- Some slides describe feelings and thoughts of developers while working.
-- These are my feelings and thoughts in the described situations.
+- Some slides describe my thoughts while developing a feature.
+- Your mileage my vary.
 
 ---
 ## Quality as early as possible
@@ -57,18 +56,30 @@ questions
 ---
 ##### Fixing
 
-5. The issue is _getting fixed_
-    - discussed on the refinement and planning meetings by the team
+5. The issue is  _getting fixed_
+    - discussed on the refinement
+    - discussed on the planning meeting
+    - _both_ of these take the whole team
+
+---
+##### Fixing
+
+6. The issue is  about to  _getting fixed_
     - analyzed by a developer, reproduced again
     - developer feels frustrated
         - feels that fixing bugs is not cool as adding new shiny features, i.e.
           brings less value to the product
-        - has to find in his head how the product works in the area of the bug.
-          Or worse - understand that for the first or n-th time
+        - has to remember how the product works in the area of the bug.  Or
+          worse - understand that for the first or n-th time
    - debugged, and fixed by a developer. **Note that is the only step that
      actually adds value.**
    - fix is reviewed by the team
-   - added to changelog
+   - test plan is reviewed
+
+---
+##### Fixed and releases
+
+7. Added to changelog
 
 ---
 #### A bug caught during the implementation
@@ -117,10 +128,7 @@ product.
 2. Improve the design documents to get better quality at 1.
 
 ---
-# Quality Assurance vs Quality Assistance
-
----
-## Quality Assurance in successfull/big companies
+## Quality Assurance in successfull companies
 
 > "At Google it's the product teams that own quality, not testers. Every
 > developer is expected to do their own testing. The job of the tester is to
@@ -130,13 +138,22 @@ product.
 - James Whitaker, Engineering Directr
 
 ---
+# Quality Assistance
+
+- coined by Atlassian
+
+> Engineers define how to test their own features and test them. Test engineers
+> help with the definition of the test plan.
+
+---
 ## 10X Developer
 
-Better quality can easily get a developer a 2X-3X multiplier
+Better quality can easily get a developer a 2X multiplier
 - A feature developed for a week - 5 days
-- 3 bugs, each taking 2-3 or more days company(!) time to fixed = 10 more days
+- 3 bugs, each taking 3 or more days  of company(!) time to get fixed = 10 more
+  days
 
-Suddenly a feature trippled its cost.
+Suddenly a feature trippled its cost, not counting the negative impacts.
 
 
 ---
@@ -165,13 +182,17 @@ Freedom from having to think about what is the next step, *How do I know for
 sure that this works?*
 
 ---
-#### Freedom - no test plan
+#### No test plan
 
-> *I need to do a linear search for the golden apple here. Is that ok for the
-> performance?*
+> I need to do a linear search for the golden apple here. Is that ok for the
+> performance?
 
-> *How many apples will one have? 20? 20000?*
-> *I can't run this with so many apples easily anyway ..."*
+---
+#### No test plan
+
+> How many apples will one have? 20? 20000?
+
+> I can't run this with so many apples easily anyway ..."
 
 ---
 ####
@@ -179,14 +200,22 @@ sure that this works?*
 It is fine.
 
 ---
-#### Freedom - with test plan
 
-> *I need to do a linear search for the golden apple here. Is that ok for the
-> performance?*
+![This is fine meme](https://thenib.com/wp-content/uploads/2019/08/this-is-not-fine-005-015ff5-1.png "Everything is on fire")
+
+---
+#### Having a plan
+
+> I need to do a linear search for the golden apple here. Is that ok for the
+> performance?
+
+---
+#### Having a plan
 
 The test plan says we have to support up to 5000 apples.
-> *I have to do X to run the test, record the performance numbers I got and I
-> will know.*
+
+> I have to do X to run the test, record the performance numbers I got and I
+> will know.
 
 ---
 ### Test Cases
@@ -218,6 +247,13 @@ https://www.w3.org/TR/css-sizing-3/#cyclic-percentage-contribution
 - error guessing
 
 ---
+#### Test case generation
+
+- Consider them as different points of view on the problem and the solution.
+- They work on any level - user story, design document, implementation
+
+
+---
 ##### Cause and effect
 
 Given X and Y happen, so should Z.
@@ -229,13 +265,16 @@ Given X and Y happen, so should Z.
 
 In state X, given the event Y, go to state Z.
 
-> Given ... when ... then ... .
+- obvious for state machine like - XHRs, WebSockets, etc.
+- great for multi step algorithms - from HTML + CSS -> button the screen
 
 
 ---
 ##### Error guessing
 
 Use prior experience to guess where the bug might be.
+
+> What could possibly go wrong?
 
 ---
 #### Tests from the user story
@@ -246,76 +285,10 @@ Use prior experience to guess where the bug might be.
 
 
 ---
-#### Sample Story 
-
-> Users can show real-time rendered content from the game inside the UI.
-
-- the content can be updated by the game, so the user can tell the UI to update
-- same content might be visible in different views
-
----
-#### Tests from the design document
-
----
-#### Sample _design document_
-
-- Real-time content is rendered to render textures - i.e. images.
-- The ways to show an image in cohtml are `<img>` and `background-image`
-- User images are _special_ responses for resource requests, that have id and a
-  texture
-- User images will not be cached, since they are resources of the client, and he
-  needs to have control over their lifetime
-- the content color space must be sRGB with 32-bit color
-
-
----
-#### The tests
-
-> Given an image that is _user-image_, it is visible
-> Given an image that is _user-image_ and the user updates it, it is updated.
-
-> Image can be `<img>` or `background-image` 
-
----
-#### The tests
-
-> User images are _special_ responses for resource requests, that have id and a
-  texture
-
----
-##### Resource requests 
-
-Even for special resource requests:
-
-- `load` and `error` should work
-- aborting resource requests
-- asynchronous response on any thread
-
----
-##### Id
-
-- what is a valid id? 
-- what if the user duplicates an id?
-
----
-##### Texture
-
-- Lifetime of the texture? Who owns and determines its lifetime?
-- What if the texture is bigger / smaller than the HTML element? Mip levels?
-
----
-### Lifetime
-
-- What happens if the HTML element is no longer visible?
-    - removed from the DOM
-    - destroyed
-- Threading and rendering resources
-
----
 #### Tests from the code
 
+- expected cases
 - edge-cases
-- insane cases
 - worst case
 - _incorrect_ usage
 - error guessing - aka "code smells"
@@ -335,7 +308,7 @@ Even for special resource requests:
 
 - _This won't support height % from autosized container_
 
-- But still the behavior must be defined.
+- But still the behavior must be defined and documented.
 - have a test for it.
 
 ---
@@ -383,11 +356,25 @@ Even for special resource requests:
 - systems that are using the feature
 - systems that the feature is using
 
+
+---
+### Interactions with other systems
+
+- integration in Unreal Engine 4
+- integration in Unity3D - C# API?
+- WebAnimations API with style resolving and layout?
+
 ---
 ### Risks
 
 - what is the worst that could happen?
 - how are we testing for that?
+
+---
+### Risks
+
+- start with 3 risks
+- how can we mitigate them?
 
 ---
 ### Living Document
@@ -398,16 +385,102 @@ The test plan is a living document - as I do the implementation I see things:
 - edge-cases in the implementation
 - risks for the implementation
 
-
 ---
 ### Muscle
 
-Creating test cases is like doing push-ups - takes practice.
+Creating test plans and cases is like everything - it takes practice.
 
+Lets say you want to do push-ups.
 1. Start with 10, even not full ones. 
 2. It will get easier day by day and one day you'll do easily 100.
 
 You can't be at 2. without 1.
+
+
+---
+## Sample Story 
+
+> Users can show real-time rendered content from the game inside the UI.
+
+- the content can be updated by the game, so the user can tell the UI to update
+- same content might be visible in different views
+
+---
+### Tests from the design document
+
+---
+### Sample _design document_
+
+- Real-time content is rendered to render textures - i.e. images.
+- The ways to show an image in cohtml are `<img>` and `background-image`
+- User images are _special_ responses for resource requests, that have id and a
+  texture
+- User images will not be cached, since they are resources of the client, and he
+  needs to have control over their lifetime
+- the user images are reference counted and shared between elements and views
+- the user images are rendered just as a regular texture
+
+
+---
+### The tests
+
+- Given an image that is _user-image_, it is visible
+- Given an image that is _user-image_ and the user updates it, it is updated.
+
+- Image can be `<img>` or `background-image` 
+
+---
+### The tests
+
+> User images are _special_ responses for resource requests, that have id and a
+  texture
+
+---
+#### Resource requests 
+
+Even for special resource requests:
+
+- `load` and `error` should work
+- aborting resource requests
+- asynchronous response on any thread
+- the element that needed the user-image is no longer alive?
+
+---
+#### Id
+
+- what is a valid id? 
+- what if the user duplicates an id?
+
+---
+#### Texture
+
+- Lifetime of the texture? Who owns and determines its lifetime?
+- What if the texture is bigger / smaller than the HTML element?, different
+  aspect ratio?
+- Mip levels?
+
+---
+#### Rendering
+
+> the user images are rendered just as a regular texture 
+
+- the content color space must be RGB with 32-bit color, pre-multiplied alpha
+
+---
+#### Lifetime
+
+- What happens if the HTML element is no longer visible?
+    - removed from the DOM
+    - destroyed
+- Threading and rendering resources
+
+---
+### Risks
+
+1. Leaking user-images, life-time management with engines with automatic
+   life-time management for resources.
+2. Sharing user-images between views and elements
+3. Drawing an texture while it is still being rendered.
 
 ---
 # Test Plan Checklist
@@ -431,6 +504,10 @@ The test plan contains answers to the following questions:
     - List of the affected features
     - List of tests that will ensure that these features are not regressed when
       used on their own or in combination with the new feature
+
+---
+## How will I do it?
+
 4. What could possibly go wrong?
     - List of risks for the feature
         - multithreading and synchronization
