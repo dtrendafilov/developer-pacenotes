@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on Developer Pacenotes</title>
+    <title>web on Developer Pacenotes</title>
     <link>https://developer-pacenotes.com/tags/web/</link>
-    <description>Recent content in Web on Developer Pacenotes</description>
+    <description>Recent content in web on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Nov 2017 19:00:00 +0200</lastBuildDate>
@@ -21,9 +21,7 @@
 practicality of using &lt;a href=&#34;https://news.ycombinator.com/item?id=14245183&#34;&gt;it for powering desktop applications&lt;/a&gt;.
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
-your PC feel like an electric typewriter.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+your PC feel like an electric typewriter.&lt;/p&gt;</description>
     </item>
     
   </channel>
