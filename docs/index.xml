@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Developer Pacenotes</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Sep 2018 17:10:27 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 21 Jan 2021 17:10:27 +0300</lastBuildDate>
     
 	<atom:link href="https://developer-pacenotes.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,7 +18,7 @@
       
       <guid>https://developer-pacenotes.com/posts/starting_a_blog/</guid>
       <description>Starting a blog Starting a blog has always been a daunting task for me. Not only because it requires sharing my personal experiences, but also because I want it to be a blog that will be easy for me to write and easy for you to read.
-I am making a simple blog, so most of the posts will be simply text with some code snippets and possibly some figures.</description>
+I am making a simple blog, so most of the posts will be simply text with some code snippets and possibly some figures. I also want:</description>
     </item>
     
     <item>
@@ -31,9 +31,7 @@ I am making a simple blog, so most of the posts will be simply text with some co
 practicality of using &lt;a href=&#34;https://news.ycombinator.com/item?id=14245183&#34;&gt;it for powering desktop applications&lt;/a&gt;.
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
-your PC feel like an electric typewriter.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+your PC feel like an electric typewriter.&lt;/p&gt;</description>
     </item>
     
     <item>

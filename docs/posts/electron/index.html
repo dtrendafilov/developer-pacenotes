@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.48" />
+        <meta name="generator" content="Hugo 0.74.3" />
         
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
@@ -36,9 +36,7 @@
 practicality of using it for powering desktop applications.
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
-your PC feel like an electric typewriter.
-
-"/>
+your PC feel like an electric typewriter."/>
 <meta name="twitter:site" content="@DimitarNT"/>
 
         <meta property="og:title" content="Electron is bad, but Electron apps are here to stay" />
@@ -46,25 +44,20 @@ your PC feel like an electric typewriter.
 practicality of using it for powering desktop applications.
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
-your PC feel like an electric typewriter.
-
-" />
+your PC feel like an electric typewriter." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://developer-pacenotes.com/posts/electron/" /><meta property="article:published_time" content="2017-11-23T19:00:00&#43;02:00"/>
-<meta property="article:modified_time" content="2017-11-23T19:00:00&#43;02:00"/>
-        
-<meta itemprop="name" content="Electron is bad, but Electron apps are here to stay">
+<meta property="og:url" content="https://developer-pacenotes.com/posts/electron/" />
+<meta property="article:published_time" content="2017-11-23T19:00:00+02:00" />
+<meta property="article:modified_time" content="2017-11-23T19:00:00+02:00" />
+
+        <meta itemprop="name" content="Electron is bad, but Electron apps are here to stay">
 <meta itemprop="description" content="Ever since Electron has been created a lot has been discussed about the
 practicality of using it for powering desktop applications.
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
-your PC feel like an electric typewriter.
-
-">
-
-
-<meta itemprop="datePublished" content="2017-11-23T19:00:00&#43;02:00" />
-<meta itemprop="dateModified" content="2017-11-23T19:00:00&#43;02:00" />
+your PC feel like an electric typewriter.">
+<meta itemprop="datePublished" content="2017-11-23T19:00:00+02:00" />
+<meta itemprop="dateModified" content="2017-11-23T19:00:00+02:00" />
 <meta itemprop="wordCount" content="724">
 
 
@@ -338,9 +331,6 @@ practicality of using <a href="https://news.ycombinator.com/item?id=14245183">it
 Electron-based apps tend to have high CPU usage and even higher memory usage,
 easily taking gigabytes of RAM.They reduce battery life and generally make
 your PC feel like an electric typewriter.</p>
-
-<p></p>
-
 <p>Electron is a magical combination of node.js and Chromium. It allows you to
 have a web application that has access to the OS and effectively have a
 desktop app. Both CPU and memory usage are caused by Chromium. It is no
@@ -348,10 +338,8 @@ surprise - Chromium is designed to show every website out there in the most
 robust and secure way, while providing tons of extra features - from spell
 checking to Safe Browsing and extensions. Performance comes somewhere after
 that.</p>
-
 <p>Here is a screenshot of the memory and CPU usage for <a href="https://code.visualstudio.com/">Visual Studio
 Code</a>, while editing this blog post.</p>
-
 
 
 
@@ -389,7 +377,6 @@ Code</a>, while editing this blog post.</p>
   
 
 
-
 <p>There has been a <a href="https://medium.com/@caspervonb/electron-is-cancer-b066108e6c32">call for going back to native</a> applications. But
 they are not perfect either - they are not portable, sometimes even between
 different versions of the same OS. They do provide the native look and feel
@@ -407,13 +394,11 @@ you had to restart your browser to see the new version of an web app? Unless
 I need to change the underlying Electron version, I can deploy newer and
 better versions of my application every minute. And no one will ever have to
 restart my app.</p>
-
 <p>A lot of effort has been invested by popular Electron applications to reduce
 their resource usage. Slack, for example, <a href="https://slack.engineering/reducing-slacks-memory-footprint-4480fec7e8eb">cut down tabs</a> for unused
 teams and migrated from <a href="https://slack.engineering/growing-pains-migrating-slacks-desktop-app-to-browserview-2759690d9c7b"><code>&lt;webview&gt;</code> to <code>BrowserView</code></a>. It took me
 some time to grasp how actually the <a href="https://blog.figma.com/introducing-browserview-for-electron-7b40b4b493d5"><code>BrowserView</code></a> is helping
 them. So, below is a simpler explanation.</p>
-
 <p>First you need to know a little bit how Chromium works. It has a
 <a href="https://www.chromium.org/developers/design-documents/multi-process-architecture">multi-process architecture</a>. In short - it creates a single process
 for every web page, iframe or plugin present on a webpage. There are two
@@ -422,17 +407,14 @@ communicates with the OS, and a GPU process - the one that draws everything.
 Electron shows web content inside webview, so it creates an additional
 process BrowserView shows the web content directly, with no extra process,
 but you have to size and move the window without the layout powers of CSS.</p>
-
 <p>So going away from <code>&lt;webview&gt;</code> to a <code>BrowserView</code> for Slack meant that they
 got rid of one process of all. And they had to change a lot of their code in
 order to do that.</p>
-
 <p>Meanwhile, other industries such as gaming, embedded and automotive have
 realized the need for a fast and resource efficient web renderer. We, at
 <a href="https://coherent-labs.com">Coherent Labs</a>, have created
 <a href="https://lensreality.com">LensVR</a>, a lean and mean web renderer that can
 <a href="https://lensreality.com/lensvrrenderingpart1/">render html at 1000 frames per second</a>.</p>
-
 
 
 
@@ -468,7 +450,6 @@ realized the need for a fast and resource efficient web renderer. We, at
       <div class="caption">The Coherent Editor written in TypeScript and HTML and running inside Coherent GT</div>
     </div>
   
-
 
 
 <p>So just as the terrible browsers circa 2000-2005 did not stop the web from
@@ -710,7 +691,7 @@ start?</p>
     
     <p class="copyright">
       
-        &copy; 2018
+        &copy; 2021
         
           Dimitar Trendafilov
         

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Developer Pacenotes</title>
@@ -6,12 +6,13 @@
     <description>Recent content in Categories on Developer Pacenotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 06 Sep 2018 17:10:27 +0300</lastBuildDate>
     
 	<atom:link href="https://developer-pacenotes.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Web</title>
+      <title>web</title>
       <link>https://developer-pacenotes.com/categories/web/</link>
       <pubDate>Thu, 06 Sep 2018 17:10:27 +0300</pubDate>
       

@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.48" />
+        <meta name="generator" content="Hugo 0.74.3" />
         
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
@@ -39,11 +39,10 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://developer-pacenotes.com/" />
-<meta property="og:updated_time" content="2018-09-06T17:10:27&#43;03:00"/>
-        
-<meta itemprop="name" content="Developer Pacenotes">
-<meta itemprop="description" content="">
+<meta property="og:updated_time" content="2021-01-21T17:10:27+03:00" />
 
+        <meta itemprop="name" content="Developer Pacenotes">
+<meta itemprop="description" content="">
 
         
 
@@ -229,17 +228,12 @@
   
 
   <div id="content">
-    
-
-<h1 id="starting-a-blog">Starting a blog</h1>
-
+    <h1 id="starting-a-blog">Starting a blog</h1>
 <p>Starting a blog has always been a daunting task for me. Not only because it
 requires sharing my personal experiences, but also because I want it to be
 a blog that will be easy for me to write and easy for you to read.</p>
-
 <p>I am making a simple blog, so most of the posts will be simply text with some
 code snippets and possibly some figures. I also want:</p>
-
 <ul>
 <li>fast loading time even on a slow mobile network connection</li>
 <li>my own domain</li>
@@ -248,11 +242,8 @@ code snippets and possibly some figures. I also want:</p>
 <li>free or as cheap as possible</li>
 <li>ad free</li>
 </ul>
-
 <p>Here is how I choose to create the blog you are reading at the moment.</p>
-
 <h2 id="content-management-system-cms">Content Management System (CMS)</h2>
-
 <p><a href="https://en.wikipedia.org/wiki/Content_management_system">CMS</a> like Wordpress
 and Ghost make it very easy for a lots of people to create and edit content,
 with minimal effort. I have experience with Wordpress, so my impressions apply
@@ -265,7 +256,6 @@ analytics, search optimization, social sharing and so on (and you probably do
 want these, in order to have readers on your blog) you easily get at least four
 plugins, each of them adding at least JavaScript or CSS files to be loaded by
 the browser on each page.</p>
-
 <p>In the end to show a single post to the reader, your CMS fetches the content
 from the database, filters it through the theme and all of the plugins and
 serves it to the browser. The browser makes ten more requests to fetch all the
@@ -275,49 +265,36 @@ connection for all of the requests. Sure, there are ways to optimize this such
 as using caching and Content Delivery Networks (CDN). Suddenly having
 a performing personal blog requires quite a lot of effort and knowledge of
 deploying websites.</p>
-
 <p>There hosting services that will do that for you, but they will:</p>
-
 <ul>
 <li>charge you for that</li>
 <li>or serve some ads</li>
 <li>require you to use their domain</li>
 </ul>
-
 <h2 id="static-site-generators">Static site generators</h2>
-
 <p>Static site generators take a bunch of files in a folder, filter them through
 the theme with a text template engine and spill out a folder with a bunch of
 HTML, JavaScript and CSS files. You upload this folder to a simple web server
 and you get a blog.</p>
-
 <p>The simplicity is great, but it comes with some trade-offs.</p>
-
 <p>You have to write all the content in a text editor. The trick here is to choose
 a generator that has live preview. The live preview starts a local web server
 and you can open it in a browser to see the final post. I keep the browser
 opened on half of the screen, the text editor on the other half and whenever
 I save the file - it immediately shows me the final content.</p>
-
 <p>To get things like version history, you will need a version control system like
 Git, but that is a non-issue for me.</p>
-
 <p>There are no plugins, so if you want something that is not present in the theme
 already - you have to code it yourself.</p>
-
 <p>Since the site is static, i.e. there is no database behind it, there are no
 comments out of the box. There are services like <a href="https://disqus.com">Disqus</a>
 that provide a comment section for each blog post. You can find a overeview of
 some of them <a href="https://darekkay.com/blog/static-site-comments/">here</a> and some
 <a href="https://gohugo.io/content-management/comments/">here</a>.</p>
-
 <h3 id="choosing-a-static-site-generator">Choosing a static site generator</h3>
-
 <p>Here is a <a href="https://www.staticgen.com/">list</a> static site generators and you can
 see they are a lot.</p>
-
 <p>My criteria for choosing were:</p>
-
 <ol>
 <li>Live-preview as said above</li>
 <li>Having nice and high-quality themes</li>
@@ -329,19 +306,15 @@ theme eventually</li>
 but sometimes it is the only option. Or you might to want to understand how
 it works.</li>
 </ol>
-
 <p>I have been using <a href="https://hexo.io/">hexo</a> before for <a href="https://sofiacpp.github.io/advanced-cpp/">another blog-like
 site</a> and it is definitely a good
 choice. However, it is written in JavaScript and runs in node.js, so you get
 some of the node.js ecosystem problems - I spent a lot of time making scripts
 for the content generation, the slides and managing the dependencies of hexo,
 the theme, the other dependencies.</p>
-
 <p>So this time I am going with <a href="https://gohugo.io/">hugo</a> it is distributed as a single
 executable (no more <em>node_modules</em>), it is fast and has some great themes.</p>
-
 <h2 id="themes">Themes</h2>
-
 <p>Almost everything in your blog depends on the theme that you chose for it. Be
 sure to chose one that you like and works well for your content on all possible
 devices. When you go to the site of any CMS or static generator, there will be
@@ -350,39 +323,30 @@ curated. Some of them include everything, some of them a too minimalist to be
 useful. Sooner or later you will need to change something in the theme. Make
 sure it is well written and organized, so that making changes will be easier.
 I have two indicators for the quality of a theme:</p>
-
 <ul>
 <li>how recent is the last commit and how many commits there are in the history</li>
 <li>how many stars it has in GitHub. Forks too show the popularity, but many forks
 may be a symptom that many changes were necessary.</li>
 </ul>
-
 <p>Wordpress has an edge here - it is used in a lot of commercial websites, so
 there are commercial themes for it. Some of them provide support and paid
 customization.</p>
-
 <p>The theme I choose is <a href="https://themes.gohugo.io/future-imperfect/">Future
 Imperfect</a>. It looks great an all
 devices, (may be even a bit too stylish for me), has tons of options and is easy
 to modify.</p>
-
 <h2 id="hosting-and-domain">Hosting and domain</h2>
-
 <p>The options I had for the hosting of the blog content were Amazon S3 and GitHub
 Pages. Amazon S3 is pretty cheap, but still not free. And serving an S3 bucket
 on the web requires some configuration. I have used GitHub Pages before, so
 their almost zero configuration won me. The only thing I had to configure was to
 make them work with a custom domain.</p>
-
 <p>About the domain - it is almost impossible to find a domain that is not used or
 bought, but I did it :). I have been using Amazon Route53 for company websites
 before and they gave me the lowest price, so it was an easy choice.</p>
-
 <h2 id="the-setup">The setup</h2>
-
 <p>There is no point in replicating the documentation of hugo, GitHub Pages and
 Amazon Route53, so here are the links:</p>
-
 <ol>
 <li><a href="https://gohugo.io/getting-started/quick-start/">Hugo Quick Start</a></li>
 <li>theme setup - <a href="https://github.com/jpescador/hugo-future-imperfect">hugo-future-imperfect</a></li>
@@ -393,19 +357,15 @@ for an organization, a project) and supported types of domains.</li>
 <li>Amazon Route53 UI can be confusing but for this setup you&rsquo;ll need to create
 only CNAME and A records and they are easy enough to set up.</li>
 </ol>
-
 <h1 id="the-result">The result</h1>
-
 <p>So far, hugo is great, hosting and deployment is easy. The site seems fast
 enough, even though the theme is not really optimized for fast loading (like
 having the most important styles directly in the HTML).</p>
-
 <p>The blog has took me one day to get up and running - choosing a static
 generator, a theme, thinking up the domain and buying that. And it is almost
 free - the only think that actually costs me something is the domain name and
 that&rsquo;s around $12 per year. You can get a blog for free, if you don&rsquo;t insist on
 having own domain.</p>
-
 <p>As you will notice the blog does not have comments. I had configured Disqus for
 comments, but loading the Disqus comments form was the slowest part of the blog.
 Then I found out about <a href="https://staticman.net/">Staticman</a> and really liked the
@@ -721,7 +681,7 @@ this blog gathers enough readers to actually need it.</p>
     
     <p class="copyright">
       
-        &copy; 2018
+        &copy; 2021
         
           Dimitar Trendafilov
         
