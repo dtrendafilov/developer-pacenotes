@@ -506,6 +506,7 @@ inside the object.
 Consider adding the padding explicitly in the object to make it visible:
 
     char __padding[N] = { 0 };
+    static_assert(No-Extra-Padding, "Extra padding detected");
 
 
 ---
