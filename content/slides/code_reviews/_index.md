@@ -332,7 +332,7 @@ lifetime.
 Smart pointers can be `nullptr` as well.
 
 ---
-##### 2. Container choice
+##### Container choice
 
 Use a `vector`.
 
@@ -349,7 +349,7 @@ Use a `vector`.
 - elements must not be relocated
 
 ---
-##### 2. Container choice
+##### Container choice
 
 The container invalidation is something that can be easily overlooked when
 writing the code and what is worse - it will appear to work correctly in most
@@ -366,7 +366,7 @@ cases.
    possible relocating operation for that container?
 
 ---
-##### 3. Casts
+##### Casts
 
 Prefer `static_cast` and constructor casts whenever possible, since the compiler
 will not let you shoot yourself in the foot for most cases.
@@ -375,13 +375,13 @@ The exception here is cast from `void*` to something else - make sure that the
 type is correct.
 
 ---
-##### 3. Casts
+##### Casts
 
 *C-style* and `reinterpet-cast` are more dangerous, the compiler is much more
 permissive with them.
 
 ---
-##### 3. Casts
+##### Casts
 
 1. The cast used is the safeest one possible.
 2. The types are correct.
@@ -390,7 +390,7 @@ permissive with them.
    way to go
 
 ---
-##### 4. Assumptions that are not asserted or checked
+##### Assumptions that are not asserted or checked
 
 This a bit a general category, so here are the most frequent examples:
 
@@ -407,7 +407,7 @@ This a bit a general category, so here are the most frequent examples:
 
 
 ---
-##### 5. Operations with strings
+##### Operations with strings
 
 There are three major sources of issues when working with strings:
 
@@ -417,14 +417,14 @@ There are three major sources of issues when working with strings:
 4. Indices for substrings
 
 ---
-###### 1. Null termination.
+###### Null termination.
 
 - All the APIs working with strings have special cases whether and when the
   terminating null is written to buffer and whether it is counted in the
   returned length of the string.
 
 ---
-###### 1. Null termination.
+###### Null termination.
 
 - Some of the APIs return a null terminated buffer, some don't. It is very
   easy to use a non-terminated buffer and cause a bug.
@@ -432,33 +432,33 @@ There are three major sources of issues when working with strings:
 Double check the documentation and the usage!
 
 ---
-###### 2. `char` and `wchar_t`
+###### `char` and `wchar_t`
 
 `char*` (UTF-8) and `wchar_t*` (UTF-16 or UTF32, depending on the platform)
 do not mix well. Using anything but unicode conversion library will most
 likely result in bugs when non-ascii symbols are present.
 
 ---
-###### 3. Encoding
+###### Encoding
 
 Check that the code assumes the correct encoding of the string, otherwise it
 will still be garbage.
 
 
 ---
-###### 4. Indices
+###### Indices
 
 The `std::basic_string` API is full of taking indices, so it very easy to make
 off by one error.
 
 ---
-##### 6. Smart pointers
+##### Smart pointers
 
 Smart pointers are there to resolve the problems of the plain ones, but still
 they have their own set of caveats.
 
 ---
-##### 6. Smart pointers
+##### Smart pointers
 Most shared pointers use reference counting, so the following must be checked:
 
 1. Cyclic references
@@ -474,7 +474,7 @@ Most shared pointers use reference counting, so the following must be checked:
    pointer*
 
 ---
-##### 7. `auto` and `auto&`
+##### `auto` and `auto&`
 
 `auto` is great, but it makes it very easy to create a copy of an object. Check
 that:
@@ -486,7 +486,7 @@ that:
         stack.pop();
 
 ---
-##### 8. Objects with padding
+##### Objects with padding
 
 It is very tempting to use functions like `memcmp` and `HashMemory` to create
 comparators and hash functions for objects that are used in a hash map.
@@ -495,7 +495,7 @@ However they will use the uninitialized memory that is present in any padding
 inside the object.
 
 ---
-##### 8. Objects with padding
+##### Objects with padding
 
 1. Check that there is no padding inside objects used with `memcmp` and
    `HashMemory`.
@@ -509,20 +509,20 @@ Consider adding the padding explictly in the object to make it visible:
 
 
 ---
-##### 9. Float precision and NAN
+##### Float precision and NAN
 
 - Don't use NAN.
 
 When compiled with *fast-math* it leads to undefined behaviour.
 
 ---
-##### 10. Error checking for OS and external APIs
+##### Error checking for OS and external APIs
 
 Any OS or external API call can fail, so there must be a check for failures and
 appropriate logging.
 
 ---
-##### 11. Hiding or reusing a variable
+##### Hiding or reusing a variable
 
 Hiding a
 
@@ -539,34 +539,35 @@ is really confusing and makes the code harder to read and often wrong.
 #### Coherent Labs specific code smells
 
 ---
-##### 1. Temp allocator
+##### Temp allocator
 
 We are using a temp allocator that has significant performance gains. However,
 we must be sure that each temp allocation is guarded by a `TempAllocatorScope`
 and does not out-live that.
 
 ---
-##### 1. Temp allocator
+##### Temp allocator
 
 Also look for cases, where the normal allocator is used, while the *temp
 allocator* will suffice.
 
 ---
-##### 2. Entry-points for public APIs
+##### Entry-points for public APIs
+
 
 The memory allocators rely on specific thread local variables to be set. So each
 entry point of our products must be guarded with entry point like
 `COHERENT_UIGT_ENTRY_POINT`.
 
 ---
-##### 3. Types used as task parameters
+##### Types used as task parameters
 
 We do have a great system to prevent you from shooting yourself easility.
 
 > Make sure that any added types are using the correct semantics.
 
 ---
-##### 4. Timing issues in tests
+##### Timing issues in tests
 
 Tests tend to depend on time for loading resources and similar. Every *sleep*
 and *wait* in tests should be treated as extremely smelly. Most cases can be
