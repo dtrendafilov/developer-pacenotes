@@ -343,7 +343,7 @@ Use a `vector`.
 ###### Unless you have a compelling reasons like:
 
 
-- it will hold a large number of elements, will change a lot,  and the most
+- it will hold a large number of elements, will change a lot, and the most
   common operation is going to be find an element with some property having
   a specific value
 - elements must not be relocated
@@ -383,7 +383,7 @@ permissive with them.
 ---
 ##### Casts
 
-1. The cast used is the safeest one possible.
+1. The cast used is the safest one possible.
 2. The types are correct.
 3. The level of indirection is not casted away, i.e. casting from `T**` to `Y*`.
 4. `const_cast` is usually a *design* smell, consider whether that is really the
@@ -435,7 +435,7 @@ Double check the documentation and the usage!
 ###### `char` and `wchar_t`
 
 `char*` (UTF-8) and `wchar_t*` (UTF-16 or UTF32, depending on the platform)
-do not mix well. Using anything but unicode conversion library will most
+do not mix well. Using anything but a unicode conversion library will most
 likely result in bugs when non-ascii symbols are present.
 
 ---
@@ -489,7 +489,7 @@ that:
 ##### Objects with padding
 
 It is very tempting to use functions like `memcmp` and `HashMemory` to create
-comparators and hash functions for objects that are used in a hash map.
+comparison and hash functions for objects that are used in a hash map.
 
 However they will use the uninitialized memory that is present in any padding
 inside the object.
@@ -503,7 +503,7 @@ inside the object.
    that some compilers will move the padding around when there is inheritance in
    the mix.
 
-Consider adding the padding explictly in the object to make it visible:
+Consider adding the padding explicitly in the object to make it visible:
 
     char __padding[N] = { 0 };
 
@@ -513,7 +513,7 @@ Consider adding the padding explictly in the object to make it visible:
 
 - Don't use NAN.
 
-When compiled with *fast-math* it leads to undefined behaviour.
+When compiled with *fast-math* it leads to undefined behavior.
 
 ---
 ##### Error checking for OS and external APIs
@@ -562,7 +562,7 @@ entry point of our products must be guarded with entry point like
 ---
 ##### Types used as task parameters
 
-We do have a great system to prevent you from shooting yourself easility.
+We do have a great system to prevent you from shooting yourself easily.
 
 > Make sure that any added types are using the correct semantics.
 
@@ -646,7 +646,7 @@ answering.
 
 ---
 
-- hash of unitialized memory
+- hash of uninitialized memory
 
 ---
 
@@ -654,7 +654,7 @@ answering.
 
 ---
 
-- Why a deque?
+- Why a `deque`?
 
 ---
 
@@ -699,7 +699,7 @@ answering.
     }
 ---
 
-- Entry points, needs `COHERENT_UIGT_ENTRY_POINT`.
+- Entry point?
 
 ---
 
@@ -719,7 +719,7 @@ answering.
 
 ---
 
-- `0x7ffffff` ... what???
+- `0x7ffffff` ?
 
 ---
 
