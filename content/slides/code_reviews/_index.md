@@ -739,6 +739,10 @@ answering.
 
 ---
 
+- `string::data` was not null terminated - until C++'11
+
+---
+
     CohString returnString("return ");
     returnString += evaluationString;
     JSValueRef exception = nullptr;
@@ -750,9 +754,6 @@ answering.
             nullptr, 0, &exception);
     }
 
----
-
-- `string::data` is not null terminated - until C++'11
 
 ---
     virtual void InitFileReader(AAssetManager* assetManager,
