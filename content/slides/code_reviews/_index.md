@@ -517,6 +517,10 @@ Consider adding the padding explicitly in the object to make it visible:
 When compiled with *fast-math* it leads to undefined behavior.
 
 ---
+##### Floating point comparison
+# TODO:
+
+---
 ##### Error checking for OS and external APIs
 
 Any OS or external API call can fail, so there must be a check for failures and
@@ -555,6 +559,7 @@ allocator* will suffice.
 ---
 ##### Entry-points for public APIs
 
+#TODO: Update to match cohtml
 
 The memory allocators rely on specific thread local variables to be set. So each
 entry point of our products must be guarded with entry point like
