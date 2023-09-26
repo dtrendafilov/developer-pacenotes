@@ -5,11 +5,27 @@ type: slides
 outputs: ["Reveal"]
 draft: false
 ---
-# How to review C++ code
+# How to do code reviews
 
 ---
 
 ![XKCD](https://imgs.xkcd.com/comics/code_quality.png)
+
+---
+## Code Reviews vs Pull Requests
+
+Code reviews are the general practice of changes being reviewed by fellow
+developers before being brought into the main branch.
+
+Pull requests are the feature of GitHub that allows implementing Code reviews.
+
+---
+## Code Reviews vs Pull Requests
+
+We'll use:
+
+- Code review - for the general practice
+- Pull request - for our GitHub-based implementation of the code review practice
 
 ---
 ## Why do code reviews?
@@ -17,15 +33,60 @@ draft: false
 Code reviews are a great practice. They allow for:
 
 - shared knowledge
-- ensuring code confirms to best practices and the coding standards
+- training reading and understanding code
+- more readable and understandable code
 - less smelly code
 - less bugs - cost of a bug grows with the time to find it
+- ensuring code confirms to best practices and the coding standards
+
+---
+### Shared knowledge
+
+
+---
+### Reading and understanding code
+
+Code is much more often read than written.
+
+Code is written once.
+
+After that code is either changed or read and understood over and over again.
+
+---
+### Reading and understanding code
+
+Q: How do you change code if you haven't read and understood that code?
+
+---
+### Reading and understanding code
+
+A: The wrong way.
+
+---
+### Reading and understanding code
+
+Reading and understanding code is a core skill of every software developer.
+
+It is said that reading and understanding code is three times harder than
+writing code.
+
+---
+### Growth of cost of a bug
+
+# TODO: Find source and graph of that
 
 ---
 
-## What is the most expensive bug that you know of?
+### What is the most expensive bug that you know of?
+
+# TODO:
+
+1. Add new bugs - YouTube video
+2. Expand on these and show how (if at all) they were avoidable with code
+   reviews
 
 [History's worst software bugs](https://www.wired.com/2005/11/historys-worst-software-bugs/)
+
 
 ---
 
@@ -44,37 +105,44 @@ distributor.
 There are lots of advice on how to conduct code reviews, but it is too general.
 It focuses on:
 
-- how to prepare for the review
-- how to write the review comments
-- enforcing coding standards
-- improving test coverage
+1. how to prepare yourself and the code for the review
+2. how to write the review comments
+3. improving effectiveness of code reviews
+4. enforcing coding standards
 
 ---
-## Posting a code review
+## Creating a pull request
 
-1. Post a separate review for each meaningful change
+1. Create a pull request for each meaningful change
     - unrelated small improvements can get a in-place review
-2. Remove generated files from the review
-    - unless you have changed the code that generates them
+2. Make sure that the commits in the pull requests are
+    - meaningful and atomic
+    - properly tagged for the ChangeLog
+3. Keep generated files in a separate commit in the pull request
 
 ---
-## Posting a code review
+## Creating a pull request
 
-3. Explain how you have tested the changes
-4. Add any notes that will help the reviewer
-    - link to design document
-    - link to JIRA task
+4. Add the JIRA task in the pull request title or summary
+    - this will add link from JIRA to the pull request as well
+5. Link the design document
 
 ---
 ## Posting a code review
 
 > Do review your changes before asking others to review them
 
+1. Did you do all of the above?
+2. Try to re-read and re-understand the code, without using the knowledge in
+   your head gathering while writing it.
+3. Check for smells.
+4. Check for coding style violations.
+
 ---
 ## Writing review comments
 
-1. Not personal
-2. Non judgemental
+1. Non judgemental
+2. Not personal
 
 ---
 ## Review Comments
@@ -92,7 +160,8 @@ is:
 
 > "That is will not work when ..." vs "You have missed the case when ..."
 
-> Avoid using *you* in the comments, it is easily replaceable by *we*.
+> Avoid using *you* in the comments, it is easily replaceable by 'the code' or
+> *we* even as last resort.
 
 ---
 ### The author of the code:
@@ -107,12 +176,12 @@ is:
 
 
 ---
-#### Preration
+#### Preparation
 
 1. Understand what the code is supposed to do on a high-level and then drill
    down.
-2. Give yourself enough time - start at 500 LOC / hour and adjust to your speed
-   and knowledge of the area.
+2. Give yourself enough time - start at 500 lines of code / hour and adjust to
+   your speed and knowledge of the area.
 
 ---
 #### The review
@@ -121,9 +190,21 @@ is:
 2. Understand what the code actually does. Mark any differences between the
    intended effects and the actual ones.
 3. Does the code confirm to the coding standards?
-4. Do they follow DRY, KISS?
+4. Do they follow DRY, KISS, SOLID?
 5. Are the changes covered by tests?
 6. Are there any seemingly unrelated changes?
+
+
+---
+# TODO: expand on the above
+
+---
+#### Unrelated changes
+
+Seemingly unrelated changes are very smelly, because they should have been
+either part of another pull request or there is some non-obvious flow that
+actually makes them _related_ changes.
+
 
 ---
 #### Extra-care topics
@@ -143,7 +224,6 @@ Think through all possible scenarios.
     - documentation
     - packaging
     - samples
-    - launcher
 4. Are new headers added to project files? Are the project filters correct?
 
 ---
@@ -162,16 +242,16 @@ the code that possibly indicates a deeper problem.
 ##### 1. Treat hard to understand code as wrong.
 
 A given piece of code should be understandable and its correctness *verifiable*
-in a couple of minutes.
+in a few minutes.
 
 No matter whether the reviewer is an expert in the subsystem under review or
-not. Everyone should be able to understand a small piece of code in minutes,
-once having a high-level grasp of the subsystem and the project.
+not. Once having a high-level grasp of the subsystem and the project, everyone
+should be able to understand a small piece of code in minutes,
 
 ---
 ##### 2. Lots of code changed
 
-- it is no fun to make a review of 1000 LOC
+- it is no fun to make a review of thousands of lines of code
 - the more code changed, the higher chance of bugs
 
 ---
@@ -211,7 +291,7 @@ Lack of a properly named constant usually means:
 
 > I need something here ... 13, 64, ... no ... 42 seems about right!
 
-Lets keep the magic in the air and out of the code!
+Keep the magic in the air and out of the code.
 
 ---
 #### C++ specific code smells
@@ -229,7 +309,7 @@ Pointers are not the root of all evil, but do actually tend to cause problems.
 Whenever a plain pointer is used, be sure that:
 
 1. The pointer is not `nullptr`.
-2. The pointed-to object will out live the pointer
+2. The pointed-to object will outlive the pointer
 3. The pointed-to object will not move/relocate somewhere else in the memory
 
 {{< note >}}
