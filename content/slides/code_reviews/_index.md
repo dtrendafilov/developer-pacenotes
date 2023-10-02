@@ -32,6 +32,7 @@ We'll use:
 
 Code reviews are a great practice. They allow for:
 
+- ensure that codebase health does not degrade
 - shared knowledge
 - training reading and understanding code
 - more readable and understandable code
@@ -39,9 +40,33 @@ Code reviews are a great practice. They allow for:
 - less bugs - cost of a bug grows with the time to find it
 - ensuring code confirms to best practices and the coding standards
 
+
+---
+## Why do code reviews?
+
+![Code Reviews Microsoft](https://i0.wp.com/www.michaelagreiler.com/wp-content/uploads/2019/03/Code-Review-at-Microsoft-Graphics.png?w=793&ssl=1)
+
+---
+### Why do code reviews?
+
+![Code Reviews Google](https://i2.wp.com/www.michaelagreiler.com/wp-content/uploads/2019/07/Reasons-for-code-reviews-1.png?resize=768%2C873&ssl=1)
+
+---
+### Ensure that codebase health does not degrade
+
+Often codebases health degrade through small decreases over time, especially
+when a team is under significant time constraints and they feel that they have
+to take shortcuts in order to accomplish their goals.
+
+The reviewer has responsibility over the code they are reviewing. They want to
+ensure that the codebase stays consistent, maintainable, and all of the other
+things.
+
 ---
 ### Shared knowledge
 
+Since at least two more developers will review the changes, this ensure that more
+people are aware of the changes in the code base.
 
 ---
 ### Reading and understanding code
@@ -55,37 +80,37 @@ After that code is either changed or read and understood over and over again.
 ---
 ### Reading and understanding code
 
-Q: How do you change code if you haven't read and understood that code?
-
----
-### Reading and understanding code
-
-A: The wrong way.
-
----
-### Reading and understanding code
-
 Reading and understanding code is a core skill of every software developer.
-
-It is said that reading and understanding code is three times harder than
-writing code.
 
 ---
 ### Growth of cost of a bug
 
-# TODO: Find source and graph of that
+Finding a bug in the code review:
+
+1. Here is this bug.
+2. Fix
+3. Review fix
 
 ---
+### Growuth of cost of a bug
 
-### What is the most expensive bug that you know of?
+Finding a bug after the release:
+1. Client updates and finds a bug
+2. Client reports the bug
+3. Customer Success validates the bug
+4. Area owner triages the bug
+5. Bug is refined and planned
+6. Fix
+7. Review fix
 
-# TODO:
+Four extra steps, involving at least 4 more people and not to mention the lost
+trust of the client.
 
-1. Add new bugs - YouTube video
-2. Expand on these and show how (if at all) they were avoidable with code
-   reviews
+---
+### What is the worst bug that you know of?
 
-[History's worst software bugs](https://www.wired.com/2005/11/historys-worst-software-bugs/)
+- [History's worst software bugs](https://www.wired.com/2005/11/historys-worst-software-bugs/)
+- [Wikipedia List of bugs with significant consequences](https://en.wikipedia.org/wiki/List_of_software_bugs)
 
 
 ---
@@ -95,15 +120,14 @@ writing code.
     }
 
 {{< note >}}
-Could not find the article, but this cost something like 2 mln $ for a UNIX
-distributor.
+Could not find the article, but this cost something like 2 000 000 for a UNIX
+distributor in the 1980s. That is 7 500 000 in 2023.
 {{< /note >}}
 
 ---
 ## So how to do them?
 
-There are lots of advice on how to conduct code reviews, but it is too general.
-It focuses on:
+There are lots of advice on how to conduct code reviews. It focuses on:
 
 1. how to prepare yourself and the code for the review
 2. how to write the review comments
@@ -150,15 +174,15 @@ It focuses on:
 All of us (and the reviewer and the author of the code) have to keep in mind
 is:
 
-> The code review is about the code produced by a developer at a certain moment
-> in time.
+> The code review is about the code produced by the developer at a certain
+> moment in time.
 
 ---
 ### The reviewer
 
 - You are reviewing the code, not the person.
 
-> "That is will not work when ..." vs "You have missed the case when ..."
+> "That will not work when ..." vs "You have missed the case when ..."
 
 > Avoid using *you* in the comments, it is easily replaceable by 'the code' or
 > *we* even as last resort.
@@ -239,17 +263,17 @@ the code that possibly indicates a deeper problem.
 #### General code smells
 
 ---
-##### 1. Treat hard to understand code as wrong.
+##### Treat hard to understand code as wrong.
 
 A given piece of code should be understandable and its correctness *verifiable*
-in a few minutes.
+in a minutes.
 
 No matter whether the reviewer is an expert in the subsystem under review or
 not. Once having a high-level grasp of the subsystem and the project, everyone
-should be able to understand a small piece of code in minutes,
+should be able to understand a small piece of code in minutes.
 
 ---
-##### 2. Lots of code changed
+##### Lots of code changed
 
 - it is no fun to make a review of thousands of lines of code
 - the more code changed, the higher chance of bugs
@@ -559,11 +583,9 @@ allocator* will suffice.
 ---
 ##### Entry-points for public APIs
 
-#TODO: Update to match cohtml
-
 The memory allocators rely on specific thread local variables to be set. So each
 entry point of our products must be guarded with entry point like
-`COHERENT_UIGT_ENTRY_POINT`.
+`COHTML_ENTRY_POINT`.
 
 ---
 ##### Types used as task parameters
@@ -861,6 +883,7 @@ answering.
         {
             // ...
         }
+    }
 
 ---
 
@@ -884,6 +907,19 @@ answering.
 
 ---
 # ?
+
+---
+# Resources
+
+- https://phauer.com/2018/code-review-guidelines/
+- https://www.slideshare.net/AprilWensel/compassionate-yet-candid-code-reviews
+- https://google.github.io/eng-practices/review/developer/
+- https://google.github.io/eng-practices/review/reviewer/
+- https://chromium.googlesource.com/chromium/src/+/master/docs/cr_respect.md
+- https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/cl_respect.md
+- https://www.michaelagreiler.com/code-reviews-at-microsoft-how-to-code-review-at-a-large-software-company/
+- https://www.michaelagreiler.com/code-reviews-at-google/
+- https://www.researchgate.net/publication/276162927_An_empirical_study_of_the_impact_of_modern_code_review_practices_on_software_quality
 
 ---
 
