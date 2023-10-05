@@ -5,7 +5,7 @@ type: slides
 outputs: ["Reveal"]
 draft: false
 ---
-# How to do code reviews
+# Why and how to do code reviews
 
 ---
 
@@ -14,10 +14,10 @@ draft: false
 ---
 ## Code Reviews vs Pull Requests
 
-Code reviews are the general practice of changes being reviewed by fellow
-developers before being brought into the main branch.
+- Code reviews are the general practice of changes being reviewed before being
+  brought into the main branch.
 
-Pull requests are the feature of GitHub that allows implementing Code reviews.
+- Pull requests are the feature of GitHub that allows implementing Code reviews.
 
 ---
 ## Code Reviews vs Pull Requests
@@ -37,8 +37,8 @@ Code reviews are a great practice. They allow for:
 - training reading and understanding code
 - more readable and understandable code
 - less smelly code
-- less bugs - cost of a bug grows with the time to find it
-- ensuring code confirms to best practices and the coding standards
+- less bugs
+- ensuring code confirms to best practices and coding standards
 
 
 ---
@@ -49,7 +49,7 @@ Code reviews are a great practice. They allow for:
 ---
 ### Why do code reviews?
 
-![Code Reviews Google](https://i2.wp.com/www.michaelagreiler.com/wp-content/uploads/2019/07/Reasons-for-code-reviews-1.png?resize=768%2C873&ssl=1)
+![Code Reviews Google](https://i2.wp.com/www.michaelagreiler.com/wp-content/uploads/2019/07/Reasons-for-code-reviews-1.png?w=512&ssl=1)
 
 ---
 ### Ensure that codebase health does not degrade
@@ -58,6 +58,9 @@ Often codebases health degrade through small decreases over time, especially
 when a team is under significant time constraints and they feel that they have
 to take shortcuts in order to accomplish their goals.
 
+---
+### Ensure that codebase health does not degrade
+
 The reviewer has responsibility over the code they are reviewing. They want to
 ensure that the codebase stays consistent, maintainable, and all of the other
 things.
@@ -65,17 +68,15 @@ things.
 ---
 ### Shared knowledge
 
-Since at least two more developers will review the changes, this ensure that more
-people are aware of the changes in the code base.
+Since at least two more developers will review the changes, this ensures that
+more people are aware of the changes in the code base.
 
 ---
 ### Reading and understanding code
 
-Code is much more often read than written.
-
-Code is written once.
-
-After that code is either changed or read and understood over and over again.
+- Code is much more often read than written.
+- Code is written once.
+- After that code is either changed or read and understood over and over again.
 
 ---
 ### Reading and understanding code
@@ -83,18 +84,15 @@ After that code is either changed or read and understood over and over again.
 Reading and understanding code is a core skill of every software developer.
 
 ---
-### Growth of cost of a bug
-
-Finding a bug in the code review:
+### Fixing a bug during the code review:
 
 1. Here is this bug.
 2. Fix
 3. Review fix
 
 ---
-### Growuth of cost of a bug
+### Fixing a bug in production
 
-Finding a bug after the release:
 1. Client updates and finds a bug
 2. Client reports the bug
 3. Customer Success validates the bug
@@ -102,6 +100,9 @@ Finding a bug after the release:
 5. Bug is refined and planned
 6. Fix
 7. Review fix
+
+---
+### Extra cost
 
 Four extra steps, involving at least 4 more people and not to mention the lost
 trust of the client.
@@ -161,6 +162,25 @@ There are lots of advice on how to conduct code reviews. It focuses on:
    your head gathering while writing it.
 3. Check for smells.
 4. Check for coding style violations.
+ 
+---
+### Code author mindset
+ 
+The issues found during the review are issues with the code and implementation.
+Not with your personality.
+ 
+---
+### The IKEA effect
+
+Two groups should price the value of IKEA furniture. One group got already
+assembled furniture, the other group had to assemble them first. The results
+showed that the second group was willing to pay 63 % more than the first group.
+ 
+---
+### Code author takeaway
+
+> Reflect on the review, take something as a learning and you will do better the
+> next time.
 
 ---
 ## Writing review comments
@@ -181,19 +201,81 @@ is:
 ### The reviewer
 
 - You are reviewing the code, not the person.
-
-> "That will not work when ..." vs "You have missed the case when ..."
-
-> Avoid using *you* in the comments, it is easily replaceable by 'the code' or
-> *we* even as last resort.
+- Refer to the code and author's behavior, not the author's traits
 
 ---
-### The author of the code:
+#### Prefer _I_ over _You_
 
-- The issues found during the review are issues with the code and
-  implementation. Not with your personality.
+> "I don't see the test for case X".
 
-> Do better the *next time*.
+vs
+
+> "You've missed the test for case X".
+
+---
+#### Ask questions
+
+Avoid `shoulding` on people.
+
+> "This should be named X"
+
+vs 
+
+> "How about X for a name?"
+
+---
+#### OIR for feedback
+
+1. Observation
+
+Describe your observations in an objective and neutral way. Refer to the
+behavior if you have to talk about the author. Using an I-message is often
+useful here.
+
+---
+#### OIR for feedback
+
+2. Impact
+
+Explain the impact that the observation has on you. Use I-messages.
+
+---
+#### OIR for feedback
+
+3. Request
+
+Use an I-message to express your wish or proposal.
+
+---
+#### OIR for feedback
+
+1. Observation
+
+> This method is over 100 lines long.
+
+---
+#### OIR for feedback
+
+2. Impact
+
+> This makes it hard for me to understand it.
+
+---
+#### OIR for feedback
+
+3. Request
+
+> I suggest extracting this and that into seperate methods.
+
+
+---
+### Discussion
+
+1. The code review is a discussion.
+2. The author keeps ownership over the changes.
+    > "X told me to do Y"
+3. Pull-requests are terrible place for discussions.
+    - when a non-trivial discussion needs to happen use real-time communication
 
 ---
 ### Code reviews checklist
@@ -204,23 +286,41 @@ is:
 
 1. Understand what the code is supposed to do on a high-level and then drill
    down.
-2. Give yourself enough time - start at 500 lines of code / hour and adjust to
+2. Give yourself enough time - start at 500 LoC / hour and adjust to
    your speed and knowledge of the area.
 
 ---
 #### The review
 
-1. Does the commit message correctly describe the intent of the changes?
-2. Understand what the code actually does. Mark any differences between the
+1. Understand what the code actually does. Mark any differences between the
    intended effects and the actual ones.
-3. Does the code confirm to the coding standards?
-4. Do they follow DRY, KISS, SOLID?
-5. Are the changes covered by tests?
-6. Are there any seemingly unrelated changes?
+2. Are the changes covered by tests?
+3. Do they follow DRY, KISS?
+4. Does the commit message correctly describe the intent of the changes?
+5. Are there any seemingly unrelated changes?
+6. Does the code confirm to the coding standards?
 
 
 ---
-# TODO: expand on the above
+### What to look for?
+
+1. The code is well-designed.
+2. The functionality is good for the users of the code.
+3. Any UI changes are sensible and look good.
+4. Any parallel programming is done safely.
+5. The code isn’t more complex than it needs to be.
+6. The developer isn’t implementing things they might need in the future but
+   don’t know they need now.
+ 
+---
+### What to look for?
+
+8. Code has appropriate unit tests.
+9. Tests are well-designed.
+10. The developer used clear names for everything.
+11. Comments are clear and useful, and mostly explain why instead of what.
+12. Code is appropriately documented
+13. The code conforms to our style guides.
 
 ---
 #### Unrelated changes
@@ -235,6 +335,7 @@ actually makes them _related_ changes.
 
 1. Timing issues
 2. Multi-threaded code
+3. Reentrancy
 
 Think through all possible scenarios.
 
@@ -284,11 +385,12 @@ Microsoft have a study, that shows that the most often changed files during
 the development of a new Windows version, had the most bugs after the release.
 
 ---
-##### 3. Naming
+##### Naming
 
-Beware of names without any meaning that span a lot of code.
+Beware of names without any meaning that have significant lifetime.
 
 ---
+
     int Where(const std::vector<int>& v, int i)
     {
         auto it = std::find(v.begin(), v.end(), i);
@@ -299,7 +401,7 @@ Beware of names without any meaning that span a lot of code.
 
 - `Where` ... what?
 - `i` ... ??? - needle?
-- `v` ... ??? - almost ok, given its type.
+- `v` ... ??? - heystack, container?
 - `it` - ok, lives for two lines
 
 ---
@@ -315,15 +417,13 @@ Lack of a properly named constant usually means:
 
 > I need something here ... 13, 64, ... no ... 42 seems about right!
 
-Keep the magic in the air and out of the code.
-
 ---
 #### C++ specific code smells
 
 So what to look (*sniff*) for in a C++ code review:
 
 ---
-##### 1. Pointers and references
+##### Pointers and references
 
 Pointers are not the root of all evil, but do actually tend to cause problems.
 
@@ -360,6 +460,7 @@ Smart pointers can be `nullptr` as well.
 
 Use a `vector`.
 
+- double think and explain why using something else
 - double think and explain why using `deque`
 - double think and explain why using `*Deprecated` maps
 
@@ -379,7 +480,7 @@ The container invalidation is something that can be easily overlooked when
 writing the code and what is worse - it will appear to work correctly in most
 cases.
 
-{{< frag c="Until the container relocates is storage ..." >}}
+{{< frag c="Until the container relocates its storage ..." >}}
 
 ---
 ##### So, for each container check:
@@ -388,6 +489,24 @@ cases.
 2. Is the container modified while being iterated?
 3. Is there an iterator or a pointer inside the container that will out-live
    possible relocating operation for that container?
+
+---
+##### Container iteration
+
+Container modification might not be obvious while doing iteration.
+
+    auto& eventListeners = ModifyEventListeners(eventName);
+    for (auto& listener: eventListeners)
+    {
+        dispatchEvent(listener, event);
+    }
+
+---
+##### Container iteration
+
+1. What if `dispatchEvent` gets to code that registers a new listener?
+1. What if `dispatchEvent` gets to code that unregisters a listener?
+
 
 ---
 ##### Casts
@@ -401,7 +520,7 @@ type is correct.
 ---
 ##### Casts
 
-*C-style* and `reinterpet-cast` are more dangerous, the compiler is much more
+*C-style* and `reinterpet_cast` are more dangerous, the compiler is much more
 permissive with them.
 
 ---
@@ -472,8 +591,8 @@ will still be garbage.
 ---
 ###### Indices
 
-The `std::basic_string` API is full of taking indices, so it very easy to make
-off by one error.
+The `std::basic_string` API is full of taking indices and lengths, so it very
+easy to make off by one error.
 
 ---
 ##### Smart pointers
@@ -542,7 +661,11 @@ When compiled with *fast-math* it leads to undefined behavior.
 
 ---
 ##### Floating point comparison
-# TODO:
+
+    `some_float == 0`
+
+Due to floating point representation this is almost always not what you need.
+Use epsilon based comparisons for floating point numbers.
 
 ---
 ##### Error checking for OS and external APIs
@@ -562,7 +685,7 @@ Hiding a
 is really confusing and makes the code harder to read and often wrong.
 
 ---
-##### 12. `using namespace` in headers
+##### `using namespace` in headers
 
 ---
 #### Coherent Labs specific code smells
@@ -584,8 +707,8 @@ allocator* will suffice.
 ##### Entry-points for public APIs
 
 The memory allocators rely on specific thread local variables to be set. So each
-entry point of our products must be guarded with entry point like
-`COHTML_ENTRY_POINT`.
+entry point of our products must be guarded with entry point from the
+`COHTML_ENTRY_POINT` family.
 
 ---
 ##### Types used as task parameters
@@ -593,6 +716,84 @@ entry point of our products must be guarded with entry point like
 We do have a great system to prevent you from shooting yourself easily.
 
 > Make sure that any added types are using the correct semantics.
+
+
+---
+##### Container and iterator invalidations
+
+We iterate containers and invoke user code, C++ and JavaScript all over the
+place.
+
+---
+
+    for (auto& listener : m_ListenersToNotify)
+    {
+        Notify(listener);
+    }
+    m_ListenersToNotify.clear();
+
+---
+
+    decltype(m_ListenersToNotify) toNotify;
+    m_ListenersToNotify.swap(toNotify);
+    for (auto& listener : toNotify)
+    {
+        Notify(listener);
+    }
+
+---
+
+    TempAllocatorScope tempScope;
+    TmpVector<Listener> toNotify(m_ListenersToNotify.begin(),
+                                 m_ListenersToNotify.end());
+    for (auto& listener : toNotify)
+    {
+        Notify(listener);
+    }
+
+---
+
+    // Make m_ListenersToNotify LazyCopyVector
+
+    // ensure that the iteration keeps a reference
+    auto toNotify = m_ListenersToNotify;
+
+    for (auto& listener : toNotify)
+    {
+        Notify(listener);
+    }
+
+---
+##### Missing `TraceMembers` 
+
+Every type that is exposed to the scripting and has member that is exposed
+to the scripting **must** have `TraceMembers` override and trace all such
+members there.
+
+---
+
+    decltype(m_ListenersToNotify) toNotify;
+    m_ListenersToNotify.swap(toNotify);
+    for (auto& listener : toNotify)
+    {
+        Notify(listener); // GC happens here?
+    }
+
+---
+
+    // Trace both containers in TraceMembers
+
+    COHERENT_DEBUG_ASSERT(m_CurrentToNotify.empty());
+    m_ListenersToNotify.swap(m_CurrentToNotify);
+    for (auto& listener : m_CurrentToNotify)
+    {
+        Notify(listener); // GC happens here?
+    }
+    m_CurrentToNotify.clear();
+
+---
+
+
 
 ---
 ##### Timing issues in tests
@@ -623,14 +824,11 @@ answering.
 
 ---
 
-    void DataBinder::RunEvaluatorsForProperty()
-    {
+    void DataBinder::RunEvaluatorsForProperty() {
         auto kt = modelData.PropertyEvaluators.find(propWithIndex);
-        if (kt != modelData.PropertyEvaluators.end())
-        {
+        if (kt != modelData.PropertyEvaluators.end()) {
             auto& evaluators = *kt->second.ArrayPtr;
-            for (size_t i = 0; i < evaluators.size(); ++i)
-            {
+            for (size_t i = 0; i < evaluators.size(); ++i) {
                 const auto& evaluator = evaluators[i];
                 auto node = evaluator->DOMNode.lock();
                 if (!node || !node->IsElement())
@@ -822,7 +1020,7 @@ answering.
 ---
 
 	void DataBindExpression::EvaluateIf(bool value, Element* parent,
-										TmpVector<NodePtr>& deadNodes)
+            TmpVector<NodePtr>& deadNodes)
 	{
 		TempAllocatorScope scope;
 		if (!value)
@@ -898,11 +1096,39 @@ answering.
 - Is there anyone listening?
 
 ---
+
+    auto handlers = EventMultiMap.equal_range(name);
+    std::foreach(handlers.first, handlers.second, [this](auto& handler) {
+        handler->Invoke(this);
+    });
+
+---
+
+- iterator invalidation - multimap is harder to invalidate but still `handler`
+  is user code, so it can register or unregister a handler
+- If we have `"a"` key in the multimap, `itA` the iterator to `"a"`, the
+  `handlers` range will be `[itA, end)` and `itA++` will be `end`. If the `"a"`
+  handler inserts `"b"` handler, then `handlers` is still `[itA, end)`, but
+  `itA++` will point to `"b"`
+
+---
+
+    struct EventRecord
+    {
+        Node* TargetNode;
+    };
+    
+---
+
+- How are we sure that the pointer will be valid?
+
+
+---
 ## Takeaway
 
 1. Prepare yourself to understand the code
 2. If you are not convinced something is correct in a minute, poke it until you
-   prove that it is correct or that it is broken.
+   are confident that it is either correct or that it is broken.
 3. Keep your eyes peeled for the smells.
 
 ---
